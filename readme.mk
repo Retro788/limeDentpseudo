@@ -212,3 +212,5 @@ Instrucciones de compilación y ejecución:
    ```
 
 Tenga en cuenta que la interfaz utiliza Swing, por lo que debe ejecutarse en un entorno gráfico.
+
+Si al crear su rama GitHub muestra "The head ref may contain hidden characters", renombre su rama usando solo caracteres ASCII para evitar el problema.
