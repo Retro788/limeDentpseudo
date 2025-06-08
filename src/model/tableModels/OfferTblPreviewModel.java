@@ -14,7 +14,7 @@ public class OfferTblPreviewModel extends AbstractTableModel {
 	
 	private static final long serialVersionUID = 9069481942874598372L;
 	private ArrayList<OfferTblPreviewData> tblPreviewData;
-	private String[] columnNames = { "Nombre" , "Precio" , "Koli\u010Dina" ,"Total", "Descuento", "Total con descuento" };
+        private String[] columnNames = { "Nombre" , "Precio" , "Cantidad" , "Total", "Descuento", "Total con descuento" };
 	boolean[] canEdit = new boolean[] { false , false , true , false , true , false };
 	private ArrayList<OfferTblPreviewObserver> observers = new ArrayList<>();
 	
@@ -174,25 +174,26 @@ public class OfferTblPreviewModel extends AbstractTableModel {
 		
 		OfferTblPreviewData data = tblPreviewData.get( rowIndex );
 		
-		switch (columnIndex) {
-			
-			case 2:
-				data.setPieces( (int) value );
-				fireTableCellUpdated( rowIndex , columnIndex );
-				break;
-			
-			case 4:
-				data.setDiscount( (int) value );
-				fireTableCellUpdated( rowIndex , columnIndex );
-				break;
-			
-			default:
-				throw new IllegalArgumentException( "Invalid column index" );
-			
-		}
-		
-		fireTableCellUpdated( rowIndex , columnIndex );
-		notifyObservers();
+                switch (columnIndex) {
+
+                        case 2:
+                                data.setPieces( (int) value );
+                                fireTableCellUpdated( rowIndex , columnIndex );
+                                fireTableCellUpdated( rowIndex , 5 );
+                                break;
+
+                        case 4:
+                                data.setDiscount( (int) value );
+                                fireTableCellUpdated( rowIndex , columnIndex );
+                                fireTableCellUpdated( rowIndex , 5 );
+                                break;
+
+                        default:
+                                throw new IllegalArgumentException( "Invalid column index" );
+
+                }
+
+                notifyObservers();
 		
 	}
 	
