@@ -130,7 +130,7 @@ public class PatientCheck extends Thread {
 		
 		controllerPatient.setName( databasePatient.getName() );
 		controllerPatient.setOib( databasePatient.getOib() );
-		controllerPatient.setJmbg( databasePatient.getJmbg() );
+		controllerPatient.setCurp( databasePatient.getCurp() );
 		controllerPatient.setAddress( databasePatient.getAddress() );
 		controllerPatient.setCity( databasePatient.getCity() );
 		controllerPatient.setPhone( databasePatient.getPhone() );

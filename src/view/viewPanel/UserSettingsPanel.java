@@ -81,19 +81,19 @@ public class UserSettingsPanel extends RoundedShadowPanel implements UserObserve
 		panelOsobPodaci.setCornerRadius( 20 );
 		
 		txtImePrezime = new TextField();
-		txtImePrezime.setLabelText( "Ime i prezime" );
+                txtImePrezime.setLabelText( "Nombre y apellido" );
 		txtImePrezime.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		txtImePrezime.setBackground( new Color( 244 , 244 , 249 ) );
 		txtImePrezime.setBounds( 460 , 85 , 300 , 65 );
 		
 		txtMobitel = new TextField();
-		txtMobitel.setLabelText( "Broj mobitela" );
+                txtMobitel.setLabelText( "Número de móvil" );
 		txtMobitel.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		txtMobitel.setBackground( new Color( 244 , 244 , 249 ) );
 		txtMobitel.setBounds( 460 , 161 , 300 , 65 );
 		
 		txtMail = new TextField();
-		txtMail.setLabelText( "Mail" );
+                txtMail.setLabelText( "Correo" );
 		txtMail.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		txtMail.setBackground( new Color( 244 , 244 , 249 ) );
 		txtMail.setBounds( 460 , 237 , 300 , 65 );
@@ -149,12 +149,12 @@ public class UserSettingsPanel extends RoundedShadowPanel implements UserObserve
 		
 		btnSaveSP = new ButtonShadow();
 		btnSaveSP.setFocusPainted( false );
-		btnSaveSP.setText( "Promijeni lozinku" );
+                btnSaveSP.setText( "Cambiar contraseña" );
 		btnSaveSP.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		btnSaveSP.setBounds( 560 , 261 , 200 , 45 );
 		
 		txtOldPassword = new TextField();
-		txtOldPassword.setLabelText( "Stara lozinka" );
+                txtOldPassword.setLabelText( "Contraseña actual" );
 		txtOldPassword.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		txtOldPassword.setBackground( new Color( 244 , 244 , 249 ) );
 		txtOldPassword.setBounds( 30 , 61 , 300 , 65 );
@@ -179,7 +179,7 @@ public class UserSettingsPanel extends RoundedShadowPanel implements UserObserve
 			@Override
 			public void actionPerformed( ActionEvent e ) {
 				
-				notification.setLbMessageText( "Fotografija promijenjena" );
+                                notification.setLbMessageText( "Fotografía actualizada" );
 				JnaFileChooser imgChooser = new JnaFileChooser();
 				imgChooser.addFilter( "Pictures" , "jpg" , "jpeg" , "png" );
 				boolean returnValue = imgChooser.showOpenDialog( null );
@@ -194,8 +194,8 @@ public class UserSettingsPanel extends RoundedShadowPanel implements UserObserve
 					loginController.updateUserPhoto( selectedFile );
 					
 					notification.setType( NotificationType.SUCCESS );
-					notification.setLblTitle( "Fotografija promijenjena" );
-					notification.setLbMessageText( "Profilna fotografija uspje\u0161no promijenjena" );
+                                        notification.setLblTitle( "Fotografía actualizada" );
+                                        notification.setLbMessageText( "La foto de perfil se cambió correctamente" );
 					notification.showNotification();
 					
 				}
@@ -219,7 +219,7 @@ public class UserSettingsPanel extends RoundedShadowPanel implements UserObserve
 				
 				notification.setType( NotificationType.SUCCESS );
 				notification.setLblTitle( "Podaci promijenjeni" );
-				notification.setLbMessageText( "Uspije\u0161no ste promijenili svoje podatke ..." );
+                                notification.setLbMessageText( "Sus datos se han actualizado correctamente" );
 				notification.showNotification();
 				
 			}
@@ -236,8 +236,8 @@ public class UserSettingsPanel extends RoundedShadowPanel implements UserObserve
 					if ( txtPassword.getText().equals( txtConfirmPassword.getText() ) ) {
 						
 						Message msg = new Message();
-						msg.setMessageTitle( "Promjena lozinke" );
-						msg.setMessageText( "Jeste li sigurni da \u017eelite promijeniti lozinku?" );
+                                                msg.setMessageTitle( "Cambio de contraseña" );
+                                                msg.setMessageText( "¿Está seguro de que desea cambiar la contraseña?" );
 						msg.eventOK( new ActionListener() {
 							
 							@Override
@@ -254,9 +254,7 @@ public class UserSettingsPanel extends RoundedShadowPanel implements UserObserve
 								notification.setType( NotificationType.SUCCESS );
 								notification.setLblTitle( "Contraseña cambiada" );
 								notification.setLbMessageText( "Contraseña cambiada exitosamente" );
-								notification.showNotification();
-								
-								GlassPanePopup.closePopupLast();
+                                                                notification.showNotification();
 								
 							}
 							
@@ -267,7 +265,7 @@ public class UserSettingsPanel extends RoundedShadowPanel implements UserObserve
 					} else {
 						
 						txtConfirmPassword.setText( "" );
-						txtConfirmPassword.setHelperText( "Lozinke se ne podudaraju" );
+                                                txtConfirmPassword.setHelperText( "Las contraseñas no coinciden" );
 						txtConfirmPassword.requestFocus();
 						
 					}
@@ -275,7 +273,7 @@ public class UserSettingsPanel extends RoundedShadowPanel implements UserObserve
 				} else {
 					
 					txtOldPassword.setText( "" );
-					txtOldPassword.setHelperText( "Unijeli ste krivu lozinku" );
+                                        txtOldPassword.setHelperText( "Ha introducido una contraseña incorrecta" );
 					txtPassword.setText( "" );
 					txtConfirmPassword.setText( "" );
 					txtOldPassword.requestFocus();
