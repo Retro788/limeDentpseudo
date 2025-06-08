@@ -34,7 +34,7 @@ public class NewPatientPanel extends RoundedShadowPanel {
 	
 	private static final long serialVersionUID = 4464610519421738643L;
 	private TextField txtAdresa;
-	private TextField txtJMBG;
+	private TextField txtCURP;
 	private ButtonShadow btnDodaj;
 	private TextField txtMail;
 	private TextField txtBrojMobitela;
@@ -55,7 +55,7 @@ public class NewPatientPanel extends RoundedShadowPanel {
 	
 //	checkers
 	private boolean isOIBValid = true;
-	private boolean isJMBGValid = true;
+	private boolean isCURPValid = true;
 	private boolean isPhoneValid = true;
 	private boolean isMailValid = true;
 	private ArrayList<Boolean> checkers = new ArrayList<>();
@@ -107,16 +107,16 @@ public class NewPatientPanel extends RoundedShadowPanel {
 		txtOIB.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		txtOIB.setBackground( new Color( 244 , 244 , 249 ) );
 		
-		txtJMBG = new TextField();
-		txtJMBG.setPreferredSize( new Dimension( 340 , 65 ) );
-		txtJMBG.setMinimumSize( new Dimension( 340 , 65 ) );
-		txtJMBG.setMaximumSize( new Dimension( 340 , 65 ) );
-		txtJMBG.setLineColor( new Color( 46 , 191 , 165 ) );
-		txtJMBG.setLabelText( "CURP" );
-		txtJMBG.setHintTextColor( new Color( 121 , 118 , 118 ) );
-		txtJMBG.setForeground( new Color( 44 , 51 , 51 ) );
-		txtJMBG.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
-		txtJMBG.setBackground( new Color( 244 , 244 , 249 ) );
+		txtCURP = new TextField();
+		txtCURP.setPreferredSize( new Dimension( 340 , 65 ) );
+		txtCURP.setMinimumSize( new Dimension( 340 , 65 ) );
+		txtCURP.setMaximumSize( new Dimension( 340 , 65 ) );
+		txtCURP.setLineColor( new Color( 46 , 191 , 165 ) );
+		txtCURP.setLabelText( "CURP" );
+		txtCURP.setHintTextColor( new Color( 121 , 118 , 118 ) );
+		txtCURP.setForeground( new Color( 44 , 51 , 51 ) );
+		txtCURP.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
+		txtCURP.setBackground( new Color( 244 , 244 , 249 ) );
 		
 		txtAdresa = new TextField();
 		txtAdresa.setPreferredSize( new Dimension( 340 , 65 ) );
@@ -225,12 +225,12 @@ public class NewPatientPanel extends RoundedShadowPanel {
 			
 		} );
 		
-		txtJMBG.addKeyListener( new KeyAdapter() {
+		txtCURP.addKeyListener( new KeyAdapter() {
 			
 			@Override
 			public void keyReleased( KeyEvent e ) {
 				
-				isJMBGValid = InputControls.checkJMBG( txtJMBG );
+				isCURPValid = InputControls.checkCURP( txtCURP );
 				
 			}
 			
@@ -274,12 +274,12 @@ public class NewPatientPanel extends RoundedShadowPanel {
 					
 					notification.setType( NotificationType.SUCCESS );
 					notification.setLblTitle( "Paciente guardado" );
-					notification.setLbMessageText( "Dodali ste novog pacijenta: " + txtimePrezime.getText() );
+                                        notification.setLbMessageText( "Se ha agregado el nuevo paciente: " + txtimePrezime.getText() );
 					
 					Message msg = new Message();
-					msg.setMessageTitle(
-							"Jeste li sigurni da \u017eelite dodati pacijenta: " + txtimePrezime.getText() );
-					msg.setMessageText( "Pritiskom gumba OK pacijent će biti dodan u sustav." );
+                                        msg.setMessageTitle(
+                                                        "¿Está seguro de que desea agregar al paciente: " + txtimePrezime.getText() + "?" );
+                                        msg.setMessageText( "Al presionar el botón OK el paciente será añadido al sistema." );
 					
 					msg.eventOK( new ActionListener() {
 						
@@ -319,7 +319,7 @@ public class NewPatientPanel extends RoundedShadowPanel {
 		}
 		
 		checkers.add( isOIBValid );
-		checkers.add( isJMBGValid );
+		checkers.add( isCURPValid );
 		checkers.add( isPhoneValid );
 		checkers.add( isMailValid );
 		
@@ -360,11 +360,11 @@ public class NewPatientPanel extends RoundedShadowPanel {
 	
 	
 	/**
-	 * @param isJMBGValid the isJMBGValid to set
+	 * @param isCURPValid the isCURPValid to set
 	 */
-	public void setJMBGValid( boolean isJMBGValid ) {
+	public void setCURPValid( boolean isCURPValid ) {
 		
-		this.isJMBGValid = isJMBGValid;
+		this.isCURPValid = isCURPValid;
 		
 	}
 	
@@ -397,7 +397,7 @@ public class NewPatientPanel extends RoundedShadowPanel {
 		
 		txtimePrezime.setText( "" );
 		txtOIB.setText( "" );
-		txtJMBG.setText( "" );
+		txtCURP.setText( "" );
 		txtAdresa.setText( "" );
 		txtGrad.setText( "" );
 		txtBrojMobitela.setText( "" );
@@ -448,13 +448,13 @@ public class NewPatientPanel extends RoundedShadowPanel {
 		gbc_txtOIB.gridy = 5;
 		add( txtOIB , gbc_txtOIB );
 		
-		GridBagConstraints gbc_txtJMBG = new GridBagConstraints();
-		gbc_txtJMBG.gridwidth = 2;
-		gbc_txtJMBG.anchor = GridBagConstraints.NORTHWEST;
-		gbc_txtJMBG.insets = new Insets( 0 , 0 , 5 , 5 );
-		gbc_txtJMBG.gridx = 1;
-		gbc_txtJMBG.gridy = 6;
-		add( txtJMBG , gbc_txtJMBG );
+		GridBagConstraints gbc_txtCURP = new GridBagConstraints();
+		gbc_txtCURP.gridwidth = 2;
+		gbc_txtCURP.anchor = GridBagConstraints.NORTHWEST;
+		gbc_txtCURP.insets = new Insets( 0 , 0 , 5 , 5 );
+		gbc_txtCURP.gridx = 1;
+		gbc_txtCURP.gridy = 6;
+		add( txtCURP , gbc_txtCURP );
 		
 		GridBagConstraints gbc_txtAdresa = new GridBagConstraints();
 		gbc_txtAdresa.gridwidth = 2;
@@ -557,13 +557,13 @@ public class NewPatientPanel extends RoundedShadowPanel {
 	
 	/**
 	 *
-	 * Returns the text field object that allows entering the patient's JMBG number.
+	 * Returns the text field object that allows entering the patient's CURP number.
 	 *
-	 * @return The `TextField` object representing the patient's JMBG number.
+	 * @return The `TextField` object representing the patient's CURP number.
 	 */
-	public TextField getTxtJMBG() {
+	public TextField getTxtCURP() {
 		
-		return txtJMBG;
+		return txtCURP;
 		
 	}
 	
