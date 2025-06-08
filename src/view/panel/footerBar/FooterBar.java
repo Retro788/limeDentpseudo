@@ -37,7 +37,7 @@ public class FooterBar extends JPanel {
 	
 	private void initComponents() {
 		
-		lblFooter = new JLabel( "Powered by MPD Tech. " );
+                lblFooter = new JLabel( "LimeDent" );
 		lblFooter.setHorizontalAlignment( SwingConstants.CENTER );
 		lblFooter.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		lblFooter.setForeground( new Color( 244 , 244 , 249 ) );
