@@ -12,53 +12,60 @@ public class PatientDetailsController {
 	private PatientDetailsPanel detaljiPanel;
 	private PatientDAO patientDAO;
 	
-	/**
-	 *
-	 * Constructs a new DetaljiController object and initializes the DAO object.
-	 */
-	public PatientDetailsController() {
+    /**
+     * Crea una nueva instancia del controlador de detalles e inicializa el
+     * objeto DAO.
+     */
+    public PatientDetailsController() {
 		
 		this.patientDAO = new PatientDAO();
 		
 	}
 	
 	
-	/**
-	 *
-	 * Sets the patient data.
-	 */
-	public void setPatientData() {
-		
-		// TODO: implement method
-	}
+    /**
+     * Obtiene de la base de datos la información actual del paciente
+     * establecido en el panel y actualiza los campos visibles.
+     */
+    public void setPatientData() {
+
+        if ( detaljiPanel == null ) {
+            return;
+        }
+
+        Patient current = detaljiPanel.getPatient();
+        if ( current != null && current.getId() != null ) {
+            Patient fresh = patientDAO.getPatientByID( current.getId() );
+            if ( fresh != null ) {
+                detaljiPanel.setPatient( fresh );
+            }
+        }
+    }
 	
 	
-	/**
-	 *
-	 * Deletes the specified patient from the database.
-	 *
-	 * @param patient the patient to be deleted
-	 */
-	public void deletePatient( Patient patient ) {
+    /**
+     * Elimina el paciente especificado de la base de datos.
+     *
+     * @param patient el paciente a eliminar
+     */
+    public void deletePatient( Patient patient ) {
 		
 		patientDAO.deletePatient( patient );
 		
 	}
 	
 	
-	/**
-	 *
-	 * Updates the specified patient's information in the database.
-	 *
-	 * @param patient the patient to be updated
-	 */
-	public void updatePatient( Patient patient ) {
+    /**
+     * Actualiza la información del paciente especificado en la base de datos.
+     *
+     * @param patient el paciente a actualizar
+     */
+    public void updatePatient( Patient patient ) {
 		
 		System.out.println( "Update Patient" );
+                patient.setOib( Long.valueOf( detaljiPanel.getTxtOIB().getText() ) );
 		patient.setName( detaljiPanel.getTxtimePrezime().getText() );
-		patient.setOib( Long.valueOf( detaljiPanel.getTxtOIB().getText() ) );
-		patient.setJmbg( Long.valueOf(
-				detaljiPanel.getTxtJMBG().getText() == null ? "0000000000000" : detaljiPanel.getTxtJMBG().getText() ) );
+                patient.setCurp( detaljiPanel.getTxtCURP().getText() );
 		patient.setAddress( detaljiPanel.getTxtAdresa().getText() );
 		patient.setCity( detaljiPanel.getTxtGrad().getText() );
 		patient.setPhone( detaljiPanel.getTxtBrojMobitela().getText() );
@@ -70,39 +77,36 @@ public class PatientDetailsController {
 	}
 	
 	
-	/**
-	 *
-	 * Updates the specified patient's photo in the database.
-	 *
-	 * @param patient the patient whose photo is to be updated
-	 */
-	public void updatePatientPhoto( Patient patient ) {
+    /**
+     * Actualiza la foto del paciente especificado en la base de datos.
+     *
+     * @param patient el paciente cuya foto se actualizará
+     */
+    public void updatePatientPhoto( Patient patient ) {
 		
 		patientDAO.updatePatientPhoto( patient );
 		
 	}
 	
 	
-	/**
-	 *
-	 * Returns the DetaljiPanel object associated with this controller.
-	 *
-	 * @return the DetaljiPanel object
-	 */
-	public PatientDetailsPanel getDetaljiPanel() {
+    /**
+     * Devuelve el panel de detalles asociado a este controlador.
+     *
+     * @return el panel de detalles
+     */
+    public PatientDetailsPanel getDetaljiPanel() {
 		
 		return detaljiPanel;
 		
 	}
 	
 	
-	/**
-	 *
-	 * Sets the DetaljiPanel object associated with this controller.
-	 *
-	 * @param detaljiPanel the DetaljiPanel object to set
-	 */
-	public void setDetaljiPanel( PatientDetailsPanel detaljiPanel ) {
+    /**
+     * Asigna el panel de detalles asociado a este controlador.
+     *
+     * @param detaljiPanel el panel de detalles a asignar
+     */
+    public void setDetaljiPanel( PatientDetailsPanel detaljiPanel ) {
 		
 		this.detaljiPanel = detaljiPanel;
 		
