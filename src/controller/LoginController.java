@@ -49,7 +49,7 @@ public class LoginController {
 				
 			} else {
 				
-				return "Unijeli ste krivu lozinku!";
+                                return "La contraseña es incorrecta";
 				
 			}
 			
