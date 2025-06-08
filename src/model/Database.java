@@ -34,37 +34,21 @@ public class Database {
 	 * successful connection, the method outputs "DB Connected" to the console,
 	 * otherwise it outputs the error message to the console.
 	 */
-	public static void connect() {
-		
-		try {
-			
-			connection = DriverManager.getConnection( getDatabaseURL() , getDatabaseUsername() ,
-					getDatabasePassword() );
-			System.out.println( "DB Connected" );
-			
-		} catch ( SQLException e ) {
-			
-			System.out.println( e.getMessage() );
-			
-		} finally {
-			
-			try {
-				
-				if ( connection == null ) {
-					
-					connection.close();
-					
-				}
-				
-			} catch ( SQLException e2 ) {
-				
-				System.out.println( e2.getMessage() );
-				
-			}
-			
-		}
-		
-	}
+       public static void connect() {
+
+               try {
+
+                       connection = DriverManager.getConnection( getDatabaseURL() , getDatabaseUsername() ,
+                                       getDatabasePassword() );
+                       System.out.println( "DB Connected" );
+
+               } catch ( SQLException e ) {
+
+                       System.out.println( e.getMessage() );
+
+               }
+
+       }
 	
 	
 	/**
@@ -101,23 +85,27 @@ public class Database {
 	 */
 	private static String getDatabaseURL() {
 		
-		String url = null;
-		Properties prop = new Properties();
-		ClassLoader loader = Database.class.getClassLoader();
-		
-		try {
-			
-			InputStream stream = loader.getResourceAsStream( "config.properties" );
-			prop.load( stream );
-			url = prop.getProperty( "DatabaseURL" );
-			
-		} catch ( IOException ex ) {
-			
-			ex.printStackTrace();
-			
-		}
-		
-		return url;
+               String url = null;
+               Properties prop = new Properties();
+               ClassLoader loader = Database.class.getClassLoader();
+
+               try {
+
+                       InputStream stream = loader.getResourceAsStream( "config.properties" );
+                       if ( stream == null ) {
+                               System.err.println( "No se encontró config.properties" );
+                               return null;
+                       }
+                       prop.load( stream );
+                       url = prop.getProperty( "DatabaseURL" );
+
+               } catch ( IOException ex ) {
+
+                       ex.printStackTrace();
+
+               }
+
+               return url;
 		
 	}
 	
@@ -130,23 +118,27 @@ public class Database {
 	 */
 	private static String getDatabaseUsername() {
 		
-		String username = null;
-		Properties prop = new Properties();
-		ClassLoader loader = Database.class.getClassLoader();
-		
-		try {
-			
-			InputStream stream = loader.getResourceAsStream( "config.properties" );
-			prop.load( stream );
-			username = prop.getProperty( "DatabaseUsername" );
-			
-		} catch ( IOException ex ) {
-			
-			ex.printStackTrace();
-			
-		}
-		
-		return username;
+               String username = null;
+               Properties prop = new Properties();
+               ClassLoader loader = Database.class.getClassLoader();
+
+               try {
+
+                       InputStream stream = loader.getResourceAsStream( "config.properties" );
+                       if ( stream == null ) {
+                               System.err.println( "No se encontró config.properties" );
+                               return null;
+                       }
+                       prop.load( stream );
+                       username = prop.getProperty( "DatabaseUsername" );
+
+               } catch ( IOException ex ) {
+
+                       ex.printStackTrace();
+
+               }
+
+               return username;
 		
 	}
 	
@@ -159,23 +151,27 @@ public class Database {
 	 */
 	private static String getDatabasePassword() {
 		
-		String password = null;
-		Properties prop = new Properties();
-		ClassLoader loader = Database.class.getClassLoader();
-		
-		try {
-			
-			InputStream stream = loader.getResourceAsStream( "config.properties" );
-			prop.load( stream );
-			password = prop.getProperty( "DatabasePassword" );
-			
-		} catch ( IOException ex ) {
-			
-			ex.printStackTrace();
-			
-		}
-		
-		return password;
+               String password = null;
+               Properties prop = new Properties();
+               ClassLoader loader = Database.class.getClassLoader();
+
+               try {
+
+                       InputStream stream = loader.getResourceAsStream( "config.properties" );
+                       if ( stream == null ) {
+                               System.err.println( "No se encontró config.properties" );
+                               return null;
+                       }
+                       prop.load( stream );
+                       password = prop.getProperty( "DatabasePassword" );
+
+               } catch ( IOException ex ) {
+
+                       ex.printStackTrace();
+
+               }
+
+               return password;
 		
 	}
 	
