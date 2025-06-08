@@ -23,14 +23,24 @@ public class PatientDetailsController {
 	}
 	
 	
-	/**
-	 *
-	 * Sets the patient data.
-	 */
-	public void setPatientData() {
-		
-		// TODO: implement method
-	}
+    /**
+     * Obtiene de la base de datos la información actual del paciente
+     * establecido en el panel y actualiza los campos visibles.
+     */
+    public void setPatientData() {
+
+        if ( detaljiPanel == null ) {
+            return;
+        }
+
+        Patient current = detaljiPanel.getPatient();
+        if ( current != null && current.getId() != null ) {
+            Patient fresh = patientDAO.getPatientByID( current.getId() );
+            if ( fresh != null ) {
+                detaljiPanel.setPatient( fresh );
+            }
+        }
+    }
 	
 	
 	/**
