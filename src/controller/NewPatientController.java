@@ -48,9 +48,7 @@ public class NewPatientController {
 		String phone = noviPacijentPanel.getTxtBrojMobitela().getText();
 		String mail = noviPacijentPanel.getTxtMail().getText();
 		
-		String jmbgText = noviPacijentPanel.getTxtJMBG().getText();
-		
-		Long jmbg = (jmbgText != null && !jmbgText.isEmpty()) ? Long.valueOf( jmbgText ) : 0L;
+                String curp = noviPacijentPanel.getTxtCURP().getText();
 		
 		String address = noviPacijentPanel.getTxtAdresa().getText();
 		String city = noviPacijentPanel.getTxtGrad().getText();
@@ -58,7 +56,7 @@ public class NewPatientController {
 		String alergies = noviPacijentPanel.getTxtAlergije().getText();
 		ImageIcon profile = new ImageIcon( this.getClass().getResource( "/MPDLogo_Transparent.png" ) );
 		
-		Patient patient = new Patient( id , name , oib , jmbg , mail , phone , address , city , medicalHistory ,
+		Patient patient = new Patient( id , name , oib , curp , mail , phone , address , city , medicalHistory ,
 				alergies , profile );
 		
 		patientDAO.addPatient( patient );
