@@ -1,0 +1,8 @@
+# Compiled class files
+bin/
+build/
+*.class
+# Generated jar
+LimeDent.jar
+MANIFEST.MF
+sources.list

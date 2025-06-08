@@ -13,7 +13,7 @@ public class OfferTableModel extends AbstractTableModel {
 	
 	private static final long serialVersionUID = 7732894721444911556L;
 	private ArrayList<Offer> offerList;
-	private String[] columnNames = { "\u0160ifra" , "Nombre" , "Autor" , "Paciente" , "fecha" , "" };
+        private String[] columnNames = { "Código" , "Nombre" , "Autor" , "Paciente" , "Fecha" , "" };
 	boolean[] canEdit = new boolean[] { false , false , false , false , false , true };
 	
 	/**
