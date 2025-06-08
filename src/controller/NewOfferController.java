@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 
-import javax.swing.filechooser.FileSystemView;
 
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
