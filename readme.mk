@@ -191,3 +191,24 @@ Conclusión:
 Este proyecto LimeDent demuestra un sistema completamente funcional de gestión para clínicas dentales que maneja información de pacientes, citas, tratamientos, publicaciones y reseñas. Utiliza el patrón de diseño Modelo-Vista-Controlador (MVC), Java Swing para la UI, y MySQL para el almacenamiento de datos. El código está estructurado de una manera que facilita la expansión con nuevas funcionalidades como nuevos roles de usuario, diferentes tipos de tratamientos y reportes avanzados.
 
 Para los estudiantes que busquen entender este proyecto, los conceptos clave en los que enfocarse incluyen la arquitectura Modelo-Vista-Controlador, la conectividad con la base de datos mediante JDBC, el diseño de la interfaz gráfica con Swing, y las operaciones CRUD básicas.
+Instrucciones de compilación y ejecución:
+
+1. Asegúrese de tener Java 8 o superior instalado y un servidor MySQL en funcionamiento.
+2. Edite el archivo `src/config.properties` con su usuario, contraseña y URL de la base de datos.
+3. Ejecute el script `setup.sql` en su servidor MySQL para crear las tablas necesarias.
+4. Compile la aplicación ejecutando:
+   ```bash
+   find src -name "*.java" > sources.list
+   javac -d build -cp "libs/*:libs/Swing/*" @sources.list
+   ```
+5. Cree el archivo JAR:
+   ```bash
+   echo "Main-Class: app.Start" > MANIFEST.MF
+   jar cfm LimeDent.jar MANIFEST.MF -C build . -C src config.properties
+   ```
+6. Ejecute la aplicación con:
+   ```bash
+   java -cp "libs/*:libs/Swing/*:LimeDent.jar" app.Start
+   ```
+
+Tenga en cuenta que la interfaz utiliza Swing, por lo que debe ejecutarse en un entorno gráfico.
