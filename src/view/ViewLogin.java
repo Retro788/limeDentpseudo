@@ -161,7 +161,7 @@ public class ViewLogin extends JFrame {
 		setDefaultCloseOperation( WindowConstants.EXIT_ON_CLOSE );
 		setBackground( new Color( 244 , 249 , 249 ) );
 		setResizable( false );
-		setSize( 1000 , 800 );
+                setSize( 900 , 650 );
 		setUndecorated( true );
 		setLocationRelativeTo( null );
 		setVisible( true );
