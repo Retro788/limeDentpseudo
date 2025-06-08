@@ -13,7 +13,7 @@ public class ProductTableModel extends AbstractTableModel {
 	
 	private static final long serialVersionUID = 3231129840644420927L;
 	private ArrayList<Product> productList;
-	private String[] columnNames = { "ID" , "\u0160ifra" , "Nombre" , "Precio" };
+        private String[] columnNames = { "ID" , "Código" , "Nombre" , "Precio" };
 	boolean[] canEdit = new boolean[] { false , false , false , false };
 	
 	/**
