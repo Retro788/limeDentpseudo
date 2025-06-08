@@ -211,7 +211,7 @@ public class ProductsController {
 			ProductCommand command = undoStack.pop();
 			command.undo();
 			
-			data = "Vratili ste izbrisanu uslugu - " + command.getProductInfo();
+                        data = "Ha restaurado el servicio eliminado - " + command.getProductInfo();
 			
 			productList.add( command.getProduct() );
 			tableModel.fireTableDataChanged();

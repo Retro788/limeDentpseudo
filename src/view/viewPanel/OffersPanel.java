@@ -87,7 +87,7 @@ public class OffersPanel extends RoundedShadowPanel {
 		txtSearch.setMinimumSize( new Dimension( 350 , 65 ) );
 		txtSearch.setPreferredSize( new Dimension( 350 , 65 ) );
 		txtSearch.setLineColor( new Color( 46 , 191 , 165 ) );
-		txtSearch.setLabelText( "Pretra\u017ei.." );
+                txtSearch.setLabelText( "Buscar..." );
 		txtSearch.setHintTextColor( new Color( 121 , 118 , 118 ) );
 		txtSearch.setForeground( new Color( 44 , 51 , 51 ) );
 		txtSearch.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
@@ -165,12 +165,12 @@ public class OffersPanel extends RoundedShadowPanel {
 					
 				}
 				
-				notification.setLbMessageText(
-						"Ponuda " + table.getValueAt( table.getSelectedRow() , 1 ) + " izbrisana ..." );
+                                notification.setLbMessageText(
+                                                "La oferta " + table.getValueAt( table.getSelectedRow() , 1 ) + " ha sido eliminada..." );
 				Message msg = new Message();
-				msg.setMessageTitle( "Brisanje ponude" );
-				msg.setMessageText( "Jeste li sigurni da \u017eelite izbrisati ponudu "
-						+ table.getValueAt( table.getSelectedRow() , 1 ) + " ?" );
+                                msg.setMessageTitle( "Eliminar oferta" );
+                                msg.setMessageText( "¿Está seguro de que desea eliminar la oferta "
+                                                + table.getValueAt( table.getSelectedRow() , 1 ) + "?" );
 				
 				msg.eventOK( new ActionListener() {
 					
