@@ -42,7 +42,7 @@ public class PatientDetailsPanel extends RoundedShadowPanel {
 	
 	private static final long serialVersionUID = 4922166281676916917L;
 	private TextField txtAdresa;
-	private TextField txtJMBG;
+	private TextField txtCURP;
 	private ButtonShadow btnIzbrisi;
 	private ButtonShadow btnUredi;
 	private TextField txtMail;
@@ -126,16 +126,16 @@ public class PatientDetailsPanel extends RoundedShadowPanel {
 		txtOIB.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		txtOIB.setBackground( new Color( 244 , 244 , 249 ) );
 		
-		txtJMBG = new TextField();
-		txtJMBG.setPreferredSize( new Dimension( 340 , 65 ) );
-		txtJMBG.setMinimumSize( new Dimension( 340 , 65 ) );
-		txtJMBG.setMaximumSize( new Dimension( 340 , 65 ) );
-		txtJMBG.setLineColor( new Color( 46 , 191 , 165 ) );
-		txtJMBG.setLabelText( "CURP" );
-		txtJMBG.setHintTextColor( new Color( 121 , 118 , 118 ) );
-		txtJMBG.setForeground( new Color( 44 , 51 , 51 ) );
-		txtJMBG.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
-		txtJMBG.setBackground( new Color( 244 , 244 , 249 ) );
+		txtCURP = new TextField();
+		txtCURP.setPreferredSize( new Dimension( 340 , 65 ) );
+		txtCURP.setMinimumSize( new Dimension( 340 , 65 ) );
+		txtCURP.setMaximumSize( new Dimension( 340 , 65 ) );
+		txtCURP.setLineColor( new Color( 46 , 191 , 165 ) );
+		txtCURP.setLabelText( "CURP" );
+		txtCURP.setHintTextColor( new Color( 121 , 118 , 118 ) );
+		txtCURP.setForeground( new Color( 44 , 51 , 51 ) );
+		txtCURP.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
+		txtCURP.setBackground( new Color( 244 , 244 , 249 ) );
 		
 		txtAdresa = new TextField();
 		txtAdresa.setPreferredSize( new Dimension( 340 , 65 ) );
@@ -219,7 +219,7 @@ public class PatientDetailsPanel extends RoundedShadowPanel {
 		btnUredi.setFocusPainted( false );
 		
 		btnIzbrisi = new ButtonShadow();
-		btnIzbrisi.setText( "Izbri\u0161i" );
+                btnIzbrisi.setText( "Eliminar" );
 		btnIzbrisi.setPreferredSize( new Dimension( 170 , 45 ) );
 		btnIzbrisi.setMinimumSize( new Dimension( 170 , 45 ) );
 		btnIzbrisi.setMaximumSize( new Dimension( 170 , 45 ) );
@@ -250,8 +250,8 @@ public class PatientDetailsPanel extends RoundedShadowPanel {
 			public void actionPerformed( ActionEvent e ) {
 				
 				notification.setType( NotificationType.WARNING );
-				notification.setLblTitle( "Pacijent izbrisan" );
-				notification.setLbMessageText( "Pacijent " + patient.getName() + " izbrisan" );
+                                notification.setLblTitle( "Paciente eliminado" );
+                                notification.setLbMessageText( "Paciente " + patient.getName() + " eliminado" );
 				
 				Message msg = new Message();
 				msg.setMessageTitle("¿Está seguro de que desea eliminar al paciente/residente: " + patient.getName() + "?");
@@ -284,11 +284,11 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 				
 				notification.setType( NotificationType.INFO );
 				notification.setLblTitle( "Paciente actualizado" );
-				notification.setLbMessageText( "Pacijent " + patient.getName() + " a\u017euriran" );
+                                notification.setLbMessageText( "El paciente " + patient.getName() + " se ha actualizado" );
 				
 				Message msg = new Message();
-				msg.setMessageTitle( "Jeste li sigurni da \u017eelite a\u017eurirati pacijenta: " + patient.getName() );
-				msg.setMessageText( "Pritiskom gumba OK pacijent će se a\u017eurirati." );
+                                msg.setMessageTitle( "¿Está seguro de que desea actualizar al paciente: " + patient.getName() + "?" );
+                                msg.setMessageText( "Al presionar el botón OK el paciente se actualizará." );
 				msg.eventOK( new ActionListener() {
 					
 					@Override
@@ -321,12 +321,12 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 			
 		} );
 		
-		txtJMBG.addKeyListener( new KeyAdapter() {
+		txtCURP.addKeyListener( new KeyAdapter() {
 			
 			@Override
 			public void keyReleased( KeyEvent e ) {
 				
-				checkJMBG( txtJMBG.getText() );
+				checkCURP( txtCURP.getText() );
 				
 			}
 			
@@ -388,8 +388,8 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 							
 							detaljiController.updatePatientPhoto( patient );
 							notification.setType( NotificationType.SUCCESS );
-							notification.setLblTitle( "Fotografija promijenjena" );
-							notification.setLbMessageText( "Uspije\u0161no ste promijenili fotografiju" );
+                                                        notification.setLblTitle( "Fotografía actualizada" );
+                                                        notification.setLbMessageText( "La fotografía se actualizó correctamente" );
 							notification.showNotification();
 							
 						}
@@ -441,7 +441,7 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 		
 		if ( !isOIBValid ) {
 			
-			txtOIB.setHelperText( "formato invalido OIB-a .." );
+                        txtOIB.setHelperText( "Formato de DNI inválido." );
 			
 		} else {
 			
@@ -452,48 +452,35 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 	}
 	
 	
-	/**
-	 *
-	 * Checks if the provided JMBG is valid. If the JMBG is invalid, displays a
-	 * helper text under the JMBG TextField indicating the invalid format.
-	 *
-	 * @param jmbg The JMBG to check.
-	 */
-	public void checkJMBG( String jmbg ) {
-		
-		boolean isJMBGValid = true;
-		
-		if ( jmbg.length() != 13 ) {
-			
-			isJMBGValid = false;
-			
-		} else {
-			
-			char[] chars = jmbg.toCharArray();
-			
-			for ( char c : chars ) {
-				
-				if ( c < '0' || c > '9' ) {
-					
-					isJMBGValid = false;
-					
-				}
-				
-			}
-			
-		}
-		
-		if ( !isJMBGValid ) {
-			
-			txtJMBG.setHelperText( "Neispravan format JMBG-a .." );
-			
-		} else {
-			
-			txtJMBG.setHelperText( "" );
-			
-		}
-		
-	}
+        /**
+         * Verifica que la CURP proporcionada sea válida. Si no lo es se muestra
+         * un mensaje de ayuda indicando el formato incorrecto.
+         *
+         * @param jmbg CURP a comprobar.
+         */
+        public void checkCURP( String jmbg ) {
+
+                boolean isCURPValid = true;
+
+                // Validación: 18 caracteres alfanuméricos
+                if ( jmbg.length() != 18 ) {
+                        isCURPValid = false;
+                } else {
+                        char[] chars = jmbg.toCharArray();
+                        for ( char c : chars ) {
+                                if ( !Character.isLetterOrDigit( c ) ) {
+                                        isCURPValid = false;
+                                }
+                        }
+                }
+
+                if ( !isCURPValid ) {
+                        txtCURP.setHelperText( "Formato de CURP inválido." );
+                } else {
+                        txtCURP.setHelperText( "" );
+                }
+
+        }
 	
 	
 	/**
@@ -519,7 +506,7 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 		
 		if ( !isPhoneValid ) {
 			
-			txtBrojMobitela.setHelperText( "Neispravan format broja mobitela .." );
+                        txtBrojMobitela.setHelperText( "Formato de número de móvil inválido." );
 			
 		} else {
 			
@@ -552,7 +539,7 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 		
 		if ( !isMailValid ) {
 			
-			txtMail.setHelperText( "Neispravan format mail-a .. " );
+			txtMail.setHelperText( "Formato de correo inválido." );
 			
 		} else {
 			
@@ -566,7 +553,7 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 	/**
 	 *
 	 * This method sets the data for the patient into the UI fields. It updates the
-	 * label for form title, patient name field, OIB field, JMBG field, address
+	 * label for form title, patient name field, OIB field, CURP field, address
 	 * field, city field, phone field, mail field, medical history field, allergies
 	 * field and profile photo field.
 	 *
@@ -576,7 +563,7 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 		lblFormTitle.setText( "Pacijent: " + patient.getName() );
 		txtimePrezime.setText( patient.getName() );
 		txtOIB.setText( patient.getOib().toString() );
-		txtJMBG.setText( patient.getJmbg() == null ? "" : patient.getJmbg().toString() );
+		txtCURP.setText( patient.getJmbg() == null ? "" : patient.getJmbg().toString() );
 		txtAdresa.setText( patient.getAddress() );
 		txtGrad.setText( patient.getCity() );
 		txtBrojMobitela.setText( patient.getPhone() );
@@ -597,7 +584,7 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 		
 		txtimePrezime.setText( "" );
 		txtOIB.setText( "" );
-		txtJMBG.setText( "" );
+		txtCURP.setText( "" );
 		txtAdresa.setText( "" );
 		txtGrad.setText( "" );
 		txtBrojMobitela.setText( "" );
@@ -662,13 +649,13 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 		gbc_txtOIB.gridy = 6;
 		add( txtOIB , gbc_txtOIB );
 		
-		GridBagConstraints gbc_txtJMBG = new GridBagConstraints();
-		gbc_txtJMBG.gridwidth = 2;
-		gbc_txtJMBG.anchor = GridBagConstraints.NORTHWEST;
-		gbc_txtJMBG.insets = new Insets( 0 , 0 , 5 , 5 );
-		gbc_txtJMBG.gridx = 1;
-		gbc_txtJMBG.gridy = 7;
-		add( txtJMBG , gbc_txtJMBG );
+		GridBagConstraints gbc_txtCURP = new GridBagConstraints();
+		gbc_txtCURP.gridwidth = 2;
+		gbc_txtCURP.anchor = GridBagConstraints.NORTHWEST;
+		gbc_txtCURP.insets = new Insets( 0 , 0 , 5 , 5 );
+		gbc_txtCURP.gridx = 1;
+		gbc_txtCURP.gridy = 7;
+		add( txtCURP , gbc_txtCURP );
 		
 		GridBagConstraints gbc_txtAdresa = new GridBagConstraints();
 		gbc_txtAdresa.gridwidth = 2;
@@ -782,13 +769,13 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 	
 	/**
 	 *
-	 * Returns the TextField object that represents the text field for patient JMBG.
+	 * Returns the TextField object that represents the text field for patient CURP.
 	 *
-	 * @return the TextField object that represents the text field for patient JMBG
+	 * @return the TextField object that represents the text field for patient CURP
 	 */
-	public TextField getTxtJMBG() {
+	public TextField getTxtCURP() {
 		
-		return txtJMBG;
+		return txtCURP;
 		
 	}
 	
