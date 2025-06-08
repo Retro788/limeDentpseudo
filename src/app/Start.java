@@ -1,6 +1,5 @@
 package app;
 
-
 import javax.swing.SwingUtilities;
 
 import model.DatabaseConnectionThread;
@@ -10,32 +9,30 @@ import view.ViewLogin;
 
 public class Start {
 	
-	/**
-	 *
-	 * The main method of the Start class is the entry point of the application. It
-	 * initializes the login view and starts the database connection thread.
-	 *
-	 * @param args command line arguments
-	 */
-	public static void main( String[] args ) {
+    /**
+     * Punto de entrada de la aplicación. Inicializa la ventana de
+     * autenticación y arranca el hilo que mantiene la conexión con la base de
+     * datos.
+     *
+     * @param args argumentos de línea de comandos
+     */
+    public static void main( String[] args ) {
 		
-		/**
-		 * Open the login view using SwingUtilities.invokeLater method to ensure that it
-		 * runs on the event dispatch thread.
-		 */
-		SwingUtilities.invokeLater( () -> {
-			
-			ViewLogin viewLogin = new ViewLogin();
-			viewLogin.setVisible( true );
-			
-		} );
+        /**
+         * Abre la ventana de inicio de sesión utilizando SwingUtilities.invokeLater
+         * para garantizar que se ejecute en el hilo de eventos de Swing.
+         */
+        SwingUtilities.invokeLater( () -> {
+            ViewLogin viewLogin = new ViewLogin();
+            viewLogin.setVisible( true );
+        } );
 		
-		/**
-		 * Start the database connection thread
-		 */
-		DatabaseConnectionThread databaseConnectionThread = new DatabaseConnectionThread();
-		databaseConnectionThread.start();
+        /**
+         * Inicia el hilo de conexión a la base de datos.
+         */
+        DatabaseConnectionThread databaseConnectionThread = new DatabaseConnectionThread();
+        databaseConnectionThread.start();
 		
-	}
+    }
 	
 }
