@@ -161,7 +161,7 @@ public class ViewLogin extends JFrame {
 		setDefaultCloseOperation( WindowConstants.EXIT_ON_CLOSE );
 		setBackground( new Color( 244 , 249 , 249 ) );
 		setResizable( false );
-		setSize( 1000 , 800 );
+                setSize( 900 , 600 );
 		setUndecorated( true );
 		setLocationRelativeTo( null );
 		setVisible( true );
@@ -267,15 +267,17 @@ public class ViewLogin extends JFrame {
 			String errorMessage = (String) result;
 			System.out.println( errorMessage );
 			
-			notification.setLbMessageText( errorMessage );
-			notification.showNotification();
+                        notification.setLbMessageText( errorMessage );
+                        notification.setLblTitle( "Advertencia" );
+                        notification.showNotification();
 			txtPassword.setText( "" );
 			txtPassword.requestFocus();
 			
 		} else {
 			
-			notification.setLbMessageText( "No existe un usuario con ese nombre de usuario." );
-			notification.showNotification();
+                        notification.setLbMessageText( "No existe un usuario con ese nombre de usuario." );
+                        notification.setLblTitle( "Advertencia" );
+                        notification.showNotification();
 			
 		}
 		

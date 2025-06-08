@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 
-import javax.swing.filechooser.FileSystemView;
 
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
@@ -156,7 +155,8 @@ public class NewOfferController implements OfferTblPreviewObserver , ProductList
 			
 		}
 		
-		novaPonudaPanel.getLblUkupno().setText( total.setScale( 2 , RoundingMode.HALF_UP ).toString() );
+                novaPonudaPanel.getLblUkupno()
+                                .setText( totalWithDiscount.setScale( 2 , RoundingMode.HALF_UP ).toString() );
 		
 	}
 	
@@ -228,30 +228,18 @@ public class NewOfferController implements OfferTblPreviewObserver , ProductList
 	 *
 	 * @return the path to the created folder
 	 */
-	private String createFolder() {
-		
-		FileSystemView filesys = FileSystemView.getFileSystemView();
-		File file = filesys.getHomeDirectory();
-		String path = file.getAbsolutePath();
-		path = path + "\\LimeDentPonude\\";
-		
-		String folderPath = path;
-		
-		File ponudeFolder = new File( folderPath );
-		
-		if ( !ponudeFolder.exists() ) {
-			
-			ponudeFolder.mkdir();
-			
-		} else {
-			
-			System.out.println( "folder vec postoji" );
-			
-		}
-		
-		return folderPath;
-		
-	}
+        private String createFolder() {
+
+                String folderPath = System.getProperty( "user.home" ) + File.separator + "LimeDentOfertas";
+                File folder = new File( folderPath );
+
+                if ( !folder.exists() ) {
+                        folder.mkdirs();
+                }
+
+                return folderPath + File.separator;
+
+        }
 	
 	
 	/**
