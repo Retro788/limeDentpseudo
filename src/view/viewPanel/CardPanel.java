@@ -9,6 +9,7 @@ import javax.swing.border.MatteBorder;
 import controller.LoginController;
 import design.panel.RoundedPanel;
 import view.View;
+import view.viewPanel.CalendarPanel;
 
 
 
@@ -19,9 +20,10 @@ public class CardPanel extends RoundedPanel {
 	private CardLayout cl;
 	private HomePanel homePanel;
 	private ProductsPanel uslugePanel;
-	private OffersPanel ponudePanel;
-	private NewOfferPanel novaPonudaPanel;
-	private UserSettingsPanel userSettingsPanel;
+        private OffersPanel ponudePanel;
+        private NewOfferPanel novaPonudaPanel;
+        private CalendarPanel calendarPanel;
+        private UserSettingsPanel userSettingsPanel;
 	private NewMedicalExamPanel noviPregledPanel;
 	private PatientDetailsPanel detaljiPanel;
 	private NewPatientPanel noviPacijentPanel;
@@ -65,8 +67,9 @@ public class CardPanel extends RoundedPanel {
 		homePanel = new HomePanel( this , view );
 		uslugePanel = new ProductsPanel( this , view );
 		ponudePanel = new OffersPanel( this , view );
-		novaPonudaPanel = new NewOfferPanel( this , view );
-		userSettingsPanel = new UserSettingsPanel( this , view );
+                novaPonudaPanel = new NewOfferPanel( this , view );
+                calendarPanel = new CalendarPanel( this , view );
+                userSettingsPanel = new UserSettingsPanel( this , view );
 		userSettingsPanel.setBackground( new Color( 255 , 255 , 255 ) );
 		userSettingsPanel.setShadowColor( new Color( 255 , 255 , 255 ) );
 		noviPregledPanel = new NewMedicalExamPanel( this , view );
@@ -89,8 +92,9 @@ public class CardPanel extends RoundedPanel {
 		add( homePanel , "homePanel" );
 		add( uslugePanel , "uslugePanel" );
 		add( ponudePanel , "ponudePanel" );
-		add( novaPonudaPanel , "novaPonudaPanel" );
-		add( userSettingsPanel , "userSettingsPanel" );
+                add( novaPonudaPanel , "novaPonudaPanel" );
+                add( calendarPanel , "calendarPanel" );
+                add( userSettingsPanel , "userSettingsPanel" );
 		add( noviPregledPanel , "noviPregledPanel" );
 		add( detaljiPanel , "detaljiPanel" );
 		add( noviPacijentPanel , "noviPacijentPanel" );
@@ -135,9 +139,13 @@ public class CardPanel extends RoundedPanel {
 				ponudePanel.clearAll();
 				break;
 			
-			case "novaPonudaPanel":
-				novaPonudaPanel.clearAll();
-				break;
+                        case "novaPonudaPanel":
+                                novaPonudaPanel.clearAll();
+                                break;
+
+                        case "calendarPanel":
+                                calendarPanel.clearAll();
+                                break;
 			
 			case "noviPacijentPanel":
 				noviPacijentPanel.clearAll();
