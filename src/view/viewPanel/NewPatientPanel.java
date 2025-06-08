@@ -274,12 +274,12 @@ public class NewPatientPanel extends RoundedShadowPanel {
 					
 					notification.setType( NotificationType.SUCCESS );
 					notification.setLblTitle( "Paciente guardado" );
-					notification.setLbMessageText( "Dodali ste novog pacijenta: " + txtimePrezime.getText() );
+                                        notification.setLbMessageText( "Se ha agregado el nuevo paciente: " + txtimePrezime.getText() );
 					
 					Message msg = new Message();
-					msg.setMessageTitle(
-							"Jeste li sigurni da \u017eelite dodati pacijenta: " + txtimePrezime.getText() );
-					msg.setMessageText( "Pritiskom gumba OK pacijent će biti dodan u sustav." );
+                                        msg.setMessageTitle(
+                                                        "¿Está seguro de que desea agregar al paciente: " + txtimePrezime.getText() + "?" );
+                                        msg.setMessageText( "Al presionar el botón OK el paciente será añadido al sistema." );
 					
 					msg.eventOK( new ActionListener() {
 						

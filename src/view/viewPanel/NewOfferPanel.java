@@ -200,14 +200,14 @@ public class NewOfferPanel extends RoundedShadowPanel {
 		btnDodaj = new ButtonShadow();
 		btnDodaj.setMaximumSize( new Dimension( 150 , 45 ) );
 		btnDodaj.setPreferredSize( new Dimension( 150 , 45 ) );
-		btnDodaj.setText( "Dodaj" );
+                btnDodaj.setText( "Agregar" );
 		btnDodaj.setForeground( new Color( 121 , 118 , 118 ) );
 		btnDodaj.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		btnDodaj.setFocusPainted( false );
 		
 		btnIzbrisi = new ButtonShadow();
 		btnIzbrisi.setMaximumSize( new Dimension( 150 , 45 ) );
-		btnIzbrisi.setText( "Izbri\u0161i" );
+                btnIzbrisi.setText( "Eliminar" );
 		btnIzbrisi.setForegroundColorOUT( new Color( 146 , 20 , 12 ) );
 		btnIzbrisi.setForegroundColorIN( new Color( 146 , 20 , 12 ) );
 		btnIzbrisi.setForeground( new Color( 146 , 20 , 12 ) );
@@ -272,7 +272,7 @@ public class NewOfferPanel extends RoundedShadowPanel {
 		textAreaScroll.setMinimumSize( new Dimension( 250 , 250 ) );
 		textAreaScroll.setForeground( new Color( 44 , 51 , 51 ) );
 		textAreaScroll.setLineColor( new Color( 46 , 191 , 165 ) );
-		textAreaScroll.setLabelText( "Bilje\u0161ke" );
+                textAreaScroll.setLabelText( "Notas" );
 		textAreaScroll.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		textAreaScroll.setBackground( new Color( 244 , 244 , 249 ) );
 		
