@@ -105,7 +105,7 @@ public class ProductsPanel extends RoundedShadowPanel {
 		txtNazivArtikla.setMinimumSize( new Dimension( 300 , 70 ) );
 		txtNazivArtikla.setMaximumSize( new Dimension( 300 , 70 ) );
 		txtNazivArtikla.setLineColor( new Color( 46 , 191 , 165 ) );
-		txtNazivArtikla.setLabelText( "Naziv usluge" );
+                txtNazivArtikla.setLabelText( "Nombre del servicio" );
 		txtNazivArtikla.setHintTextColor( new Color( 121 , 118 , 118 ) );
 		txtNazivArtikla.setForeground( new Color( 44 , 51 , 51 ) );
 		txtNazivArtikla.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
@@ -121,7 +121,7 @@ public class ProductsPanel extends RoundedShadowPanel {
 		
 		btnDodaj = new ButtonShadow();
 		btnDodaj.setPreferredSize( new Dimension( 150 , 45 ) );
-		btnDodaj.setText( "Dodaj" );
+                btnDodaj.setText( "Agregar" );
 		btnDodaj.setForeground( new Color( 121 , 118 , 118 ) );
 		btnDodaj.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		btnDodaj.setFocusPainted( false );
@@ -130,7 +130,7 @@ public class ProductsPanel extends RoundedShadowPanel {
 		btnUpdate.setPreferredSize( new Dimension( 170 , 45 ) );
 		btnUpdate.setMinimumSize( new Dimension( 170 , 45 ) );
 		btnUpdate.setMaximumSize( new Dimension( 170 , 45 ) );
-		btnUpdate.setText( "A\u017euriraj" );
+                btnUpdate.setText( "Actualizar" );
 		btnUpdate.setForeground( new Color( 121 , 118 , 118 ) );
 		btnUpdate.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		btnUpdate.setFocusPainted( false );
@@ -159,7 +159,7 @@ public class ProductsPanel extends RoundedShadowPanel {
 		btnUndo = new ButtonTable();
 		btnUndo.setIconTextGap( 20 );
 		btnUndo.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
-		btnUndo.setText( "Poni\u0161ti brisanje" );
+                btnUndo.setText( "Deshacer eliminación" );
 		btnUndo.setFocusPainted( false );
 		btnUndo.setIcon( new ImageIcon( ProductsPanel.class.getResource( "/undo.png" ) ) );
 		
@@ -209,7 +209,7 @@ public class ProductsPanel extends RoundedShadowPanel {
 		tableScrollPane.setViewportView( table );
 		insertTableData();
 		
-		lblFormTitle = new JLabel( "Dodaj novu uslugu" );
+                lblFormTitle = new JLabel( "Agregar nuevo servicio" );
 		lblFormTitle.setForeground( new Color( 121 , 118 , 118 ) );
 		lblFormTitle.setFont( new Font( "Century Gothic" , Font.BOLD , 18 ) );
 		
@@ -279,7 +279,7 @@ public class ProductsPanel extends RoundedShadowPanel {
 					btnDodaj.setEnabled( false );
 					btnUpdate.setEnabled( true );
 					btnDelete.setEnabled( true );
-					lblFormTitle.setText( "A\u017euriraj / izbri\u0161i odabran uslugu" );
+                                        lblFormTitle.setText( "Actualizar o eliminar el servicio seleccionado" );
 					
 				}
 				
@@ -320,8 +320,8 @@ public class ProductsPanel extends RoundedShadowPanel {
 				uslugeController.addProduct( addedProduct );
 				
 				notification.setType( NotificationType.SUCCESS );
-				notification.setLblTitle( "nuevo servicio añadido" );
-				notification.setLbMessageText( "Has agregado " + addedProduct.getName() + " u bazu..." );
+                                notification.setLblTitle( "Nuevo servicio añadido" );
+                                notification.setLbMessageText( "Has agregado " + addedProduct.getName() + " a la base de datos..." );
 				notification.showNotification();
 				
 			}
@@ -337,7 +337,7 @@ public class ProductsPanel extends RoundedShadowPanel {
 					
 					notification.setType( NotificationType.WARNING );
 					notification.setLblTitle( "Advertencia" );
-					notification.setLbMessageText( "Odzna\u010dite uslugu ..." );
+                                        notification.setLbMessageText( "Seleccione un servicio..." );
 					notification.showNotification();
 					
 				}
@@ -352,13 +352,13 @@ public class ProductsPanel extends RoundedShadowPanel {
 			public void actionPerformed( ActionEvent e ) {
 				
 				notification.setType( NotificationType.SUCCESS );
-				notification.setLblTitle( "A\u017eurirana usluga" );
-				notification.setLbMessageText(
-						"A\u017eurirali ste " + table.getValueAt( table.getSelectedRow() , 2 ) + " ..." );
+                                notification.setLblTitle( "Servicio actualizado" );
+                                notification.setLbMessageText(
+                                                "Ha actualizado " + table.getValueAt( table.getSelectedRow() , 2 ) + " ..." );
 				
 				Message msg = new Message();
-				msg.setMessageTitle( "¿Está seguro de que desea a\u017cancelar el servicio: "
-						+ table.getValueAt( table.getSelectedRow() , 2 ) );
+                                msg.setMessageTitle( "¿Está seguro de que desea actualizar el servicio: "
+                                                + table.getValueAt( table.getSelectedRow() , 2 ) + "?" );
 				msg.setMessageText( "Al presionar el botón OK, el servicio se actualizará: \n" + "Valor anterio: "
 						+ table.getValueAt( table.getSelectedRow() , 2 ) + " - €"
 						+ table.getValueAt( table.getSelectedRow() , 3 ) + "\n" + "Nuevo valor: "
@@ -368,9 +368,8 @@ public class ProductsPanel extends RoundedShadowPanel {
 					@Override
 					public void actionPerformed( ActionEvent e ) {
 						
-						uslugeController.updateProduct( table.getSelectedRow() );
-						notification.showNotification();
-						GlassPanePopup.closePopupLast();
+                                                uslugeController.updateProduct( table.getSelectedRow() );
+                                                notification.showNotification();
 						
 					}
 					
@@ -392,7 +391,7 @@ public class ProductsPanel extends RoundedShadowPanel {
 					
 					notification.setType( NotificationType.WARNING );
 					notification.setLblTitle( "Advertencia" );
-					notification.setLbMessageText( "Odzna\u010dite uslugu ..." );
+                                        notification.setLbMessageText( "Seleccione un servicio..." );
 					notification.showNotification();
 					
 				}
@@ -413,7 +412,7 @@ public class ProductsPanel extends RoundedShadowPanel {
 				Message msg = new Message();
 				msg.setMessageTitle( "¿Está seguro que desea eliminar el servicio: "
 						+ table.getValueAt( table.getSelectedRow() , 2 ) );
-				msg.setMessageText( "Pritiskom gumba OK usluga se bri\u0161e nepovratno." );
+                                msg.setMessageText( "Al presionar el botón OK el servicio se eliminará de forma permanente." );
 				msg.eventOK( new ActionListener() {
 					
 					@Override
@@ -421,9 +420,8 @@ public class ProductsPanel extends RoundedShadowPanel {
 						
 						try {
 							
-							uslugeController.deleteProduct( table.getSelectedRow() );
-							notification.showNotification();
-							GlassPanePopup.closePopupLast();
+                                                        uslugeController.deleteProduct( table.getSelectedRow() );
+                                                        notification.showNotification();
 							
 						} catch ( NumberFormatException e1 ) {
 							
@@ -546,7 +544,7 @@ public class ProductsPanel extends RoundedShadowPanel {
 		
 		if ( !isCijenaValid ) {
 			
-			txtCijenaArtikla.setHelperText( "Unesite valjan oblik iznosa .." );
+                        txtCijenaArtikla.setHelperText( "Ingrese un monto válido" );
 			
 		} else {
 			

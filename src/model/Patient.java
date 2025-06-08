@@ -21,7 +21,7 @@ public class Patient {
 	private Integer id;
 	private String name;
 	private Long oib;
-	private Long jmbg;
+        private String curp;
 	private String address;
 	private String city;
 	private String phone;
@@ -85,13 +85,13 @@ public class Patient {
 	
 	/**
 	 *
-	 * Constructs a patient object with the given id, name, OIB, JMBG, email, phone,
+	 * Constructs a patient object with the given id, name, OIB, CURP, email, phone,
 	 * address, city, medical history, allergies, and profile photo.
 	 *
 	 * @param id             the patient's unique identifier
 	 * @param name           the patient's name
 	 * @param oib            the patient's OIB
-	 * @param jmbg           the patient's JMBG
+	 * @param curp           the patient's CURP
 	 * @param mail           the patient's email address
 	 * @param phone          the patient's phone number
 	 * @param address        the patient's address
@@ -100,13 +100,13 @@ public class Patient {
 	 * @param alergies       the patient's allergies
 	 * @param profilePhoto   the patient's profile photo
 	 */
-	public Patient( Integer id , String name , Long oib , Long jmbg , String mail , String phone , String address ,
-					String city , String medicalHistory , String alergies , ImageIcon profilePhoto ) {
+        public Patient( Integer id , String name , Long oib , String curp , String mail , String phone , String address ,
+                                        String city , String medicalHistory , String alergies , ImageIcon profilePhoto ) {
 		
 		this.id = id;
 		this.name = name;
 		this.oib = oib;
-		this.jmbg = jmbg;
+                this.curp = curp;
 		this.address = address;
 		this.city = city;
 		this.phone = phone;
@@ -120,13 +120,13 @@ public class Patient {
 	
 	/**
 	 *
-	 * Constructs a patient object with the given id, name, OIB, JMBG, email, phone,
+	 * Constructs a patient object with the given id, name, OIB, CURP, email, phone,
 	 * address, city, medical history, allergies, and profile photo.
 	 *
 	 * @param id             the patient's unique identifier
 	 * @param name           the patient's name
 	 * @param oib            the patient's OIB
-	 * @param jmbg           the patient's JMBG
+	 * @param curp           the patient's CURP
 	 * @param mail           the patient's email address
 	 * @param phone          the patient's phone number
 	 * @param address        the patient's address
@@ -136,14 +136,14 @@ public class Patient {
 	 * @param alergies       the patient's allergies
 	 * @param profilePhoto   the patient's profile photo
 	 */
-	public Patient( Integer id , String name , Long oib , Long jmbg , String mail , String phone , String address ,
-					String city , LocalDateTime lastExam , String medicalHistory , String alergies ,
-					ImageIcon profilePhoto ) {
+        public Patient( Integer id , String name , Long oib , String curp , String mail , String phone , String address ,
+                                        String city , LocalDateTime lastExam , String medicalHistory , String alergies ,
+                                        ImageIcon profilePhoto ) {
 		
 		this.id = id;
 		this.name = name;
 		this.oib = oib;
-		this.jmbg = jmbg;
+                this.curp = curp;
 		this.address = address;
 		this.city = city;
 		this.phone = phone;
@@ -236,26 +236,26 @@ public class Patient {
 	
 	/**
 	 *
-	 * This method retrieves the JMBG of the patient.
+	 * This method retrieves the CURP of the patient.
 	 *
-	 * @return the JMBG of the patient.
+	 * @return the CURP of the patient.
 	 */
-	public Long getJmbg() {
+	public String getCurp() {
 		
-		return jmbg;
+		return curp;
 		
 	}
 	
 	
 	/**
 	 *
-	 * This method sets the JMBG of the patient.
+	 * This method sets the CURP of the patient.
 	 *
-	 * @param jmbg the JMBG to be set.
+	 * @param curp the CURP to be set.
 	 */
-	public void setJmbg( Long jmbg ) {
+	public void setCurp( String curp ) {
 		
-		this.jmbg = jmbg;
+		this.curp = curp;
 		
 	}
 	
@@ -542,7 +542,7 @@ public class Patient {
 		Patient other = (Patient) obj;
 		
 		return Objects.equals( name , other.name ) && Objects.equals( oib , other.oib )
-				&& Objects.equals( jmbg , other.jmbg ) && Objects.equals( address , other.address )
+				&& Objects.equals( curp , other.curp ) && Objects.equals( address , other.address )
 				&& Objects.equals( city , other.city ) && Objects.equals( phone , other.phone )
 				&& Objects.equals( mail , other.mail ) && Objects.equals( medicalHistory , other.medicalHistory )
 				&& Objects.equals( lastExam , other.lastExam ) && compareImageByte( profilePhoto , other.profilePhoto );
@@ -620,7 +620,7 @@ public class Patient {
 	@Override
 	public String toString() {
 		
-		return "Patient [id=" + id + ", name=" + name + ", oib=" + oib + ", jmbg=" + jmbg + ", address=" + address
+		return "Patient [id=" + id + ", name=" + name + ", oib=" + oib + ", curp=" + curp + ", address=" + address
 				+ ", city=" + city + ", phone=" + phone + ", mail=" + mail + ", zadnji pregled=" + lastExam
 				+ ", medicalHistory=" + medicalHistory + ", alergies=" + alergies + ", profilePhoto=" + profilePhoto
 				+ "]";
