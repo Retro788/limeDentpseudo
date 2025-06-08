@@ -1,6 +1,5 @@
 package app;
 
-
 import javax.swing.SwingUtilities;
 
 import model.DatabaseConnectionThread;
@@ -17,25 +16,23 @@ public class Start {
      *
      * @param args argumentos de línea de comandos
      */
-	public static void main( String[] args ) {
+    public static void main( String[] args ) {
 		
         /**
          * Abre la ventana de inicio de sesión utilizando SwingUtilities.invokeLater
          * para garantizar que se ejecute en el hilo de eventos de Swing.
          */
-		SwingUtilities.invokeLater( () -> {
-			
-			ViewLogin viewLogin = new ViewLogin();
-			viewLogin.setVisible( true );
-			
-		} );
+        SwingUtilities.invokeLater( () -> {
+            ViewLogin viewLogin = new ViewLogin();
+            viewLogin.setVisible( true );
+        } );
 		
         /**
          * Inicia el hilo de conexión a la base de datos.
          */
-		DatabaseConnectionThread databaseConnectionThread = new DatabaseConnectionThread();
-		databaseConnectionThread.start();
+        DatabaseConnectionThread databaseConnectionThread = new DatabaseConnectionThread();
+        databaseConnectionThread.start();
 		
-	}
+    }
 	
 }
