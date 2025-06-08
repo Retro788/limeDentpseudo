@@ -189,17 +189,52 @@ public class View extends JFrame {
 		btnNovaPonudaIcon.setColor1( new Color( 244 , 244 , 249 ) );
 		btnNovaPonudaIcon.setColor2( new Color( 244 , 244 , 249 ) );
 		
-		FontAwesomeIcon btnKalendarIcon = new FontAwesomeIcon();
-		btnKalendarIcon.setIcon( FontAwesome.CALENDAR_O );
-		btnKalendarIcon.setSize( 25 );
-		btnKalendarIcon.setColor1( new Color( 244 , 244 , 249 ) );
-		btnKalendarIcon.setColor2( new Color( 244 , 244 , 249 ) );
+                FontAwesomeIcon btnKalendarIcon = new FontAwesomeIcon();
+                btnKalendarIcon.setIcon( FontAwesome.CALENDAR_O );
+                btnKalendarIcon.setSize( 25 );
+                btnKalendarIcon.setColor1( new Color( 244 , 244 , 249 ) );
+                btnKalendarIcon.setColor2( new Color( 244 , 244 , 249 ) );
+
+                FontAwesomeIcon btnInfoIcon = new FontAwesomeIcon();
+                btnInfoIcon.setIcon( FontAwesome.USER );
+                btnInfoIcon.setSize(25);
+                btnInfoIcon.setColor1( new Color(244,244,249));
+                btnInfoIcon.setColor2( new Color(244,244,249));
+
+                FontAwesomeIcon btnPracticasIcon = new FontAwesomeIcon();
+                btnPracticasIcon.setIcon( FontAwesome.BOOK );
+                btnPracticasIcon.setSize(25);
+                btnPracticasIcon.setColor1( new Color(244,244,249));
+                btnPracticasIcon.setColor2( new Color(244,244,249));
+
+                FontAwesomeIcon btnPublicacionesIcon = new FontAwesomeIcon();
+                btnPublicacionesIcon.setIcon( FontAwesome.NEWSPAPER_O );
+                btnPublicacionesIcon.setSize(25);
+                btnPublicacionesIcon.setColor1( new Color(244,244,249));
+                btnPublicacionesIcon.setColor2( new Color(244,244,249));
+
+                FontAwesomeIcon btnAgendaIcon = new FontAwesomeIcon();
+                btnAgendaIcon.setIcon( FontAwesome.CLOCK_O );
+                btnAgendaIcon.setSize(25);
+                btnAgendaIcon.setColor1( new Color(244,244,249));
+                btnAgendaIcon.setColor2( new Color(244,244,249));
+
+                FontAwesomeIcon btnResenasIcon = new FontAwesomeIcon();
+                btnResenasIcon.setIcon( FontAwesome.STAR );
+                btnResenasIcon.setSize(25);
+                btnResenasIcon.setColor1( new Color(244,244,249));
+                btnResenasIcon.setColor2( new Color(244,244,249));
 		
-		menu.addMenu( new ModelMenu( "Po\u010Detna" , btnHomeIcon.toIcon() ) );
-		menu.addMenu( new ModelMenu( "Usluge" , btnArtikliIcon.toIcon() ) );
-		menu.addMenu( new ModelMenu( "Ponude" , btnPonudeIcon.toIcon() ) );
-		menu.addMenu( new ModelMenu( "Nova Ponuda" , btnNovaPonudaIcon.toIcon() ) );
-		menu.addMenu( new ModelMenu( "Kalendar" , btnKalendarIcon.toIcon() ) );
+                menu.addMenu( new ModelMenu( "Inicio" , btnHomeIcon.toIcon() ) );
+                menu.addMenu( new ModelMenu( "Servicios" , btnArtikliIcon.toIcon() ) );
+                menu.addMenu( new ModelMenu( "Ofertas" , btnPonudeIcon.toIcon() ) );
+                menu.addMenu( new ModelMenu( "Nueva Oferta" , btnNovaPonudaIcon.toIcon() ) );
+                menu.addMenu( new ModelMenu( "Calendario" , btnKalendarIcon.toIcon() ) );
+                menu.addMenu( new ModelMenu( "Información" , btnInfoIcon.toIcon() ) );
+                menu.addMenu( new ModelMenu( "Prácticas" , btnPracticasIcon.toIcon() ) );
+                menu.addMenu( new ModelMenu( "Publicaciones" , btnPublicacionesIcon.toIcon() ) );
+                menu.addMenu( new ModelMenu( "Agenda" , btnAgendaIcon.toIcon() ) );
+                menu.addMenu( new ModelMenu( "Reseñas" , btnResenasIcon.toIcon() ) );
 		
 		TimingTarget target = new TimingTargetAdapter() {
 			
@@ -246,7 +281,7 @@ public class View extends JFrame {
 		
 		setUndecorated( true );
 		setDefaultCloseOperation( WindowConstants.EXIT_ON_CLOSE );
-		setMinimumSize( new Dimension( 1500 , 1020 ) );
+                setMinimumSize( new Dimension( 1200 , 720 ) );
 		setLocationRelativeTo( null );
 		
 	}
@@ -261,31 +296,40 @@ public class View extends JFrame {
 	 *
 	 * @param index - index of selected menu item
 	 */
-	private void selectedMenu( int index ) {
-		
-		if ( index == 0 ) {
-			
-			cardPanel.showCard( "homePanel" );
-			
-		} else if ( index == 1 ) {
-			
-			cardPanel.showCard( "uslugePanel" );
-			
-		} else if ( index == 2 ) {
-			
-			cardPanel.showCard( "ponudePanel" );
-			
-		} else if ( index == 3 ) {
-			
-			cardPanel.showCard( "novaPonudaPanel" );
-			
-		} else if ( index == 4 ) {
-			
-			cardPanel.showCard( "calendarPanel" );
-			
-		}
-		
-	}
+        private void selectedMenu( int index ) {
+                switch ( index ) {
+                        case 0:
+                                cardPanel.showCard( "homePanel" );
+                                break;
+                        case 1:
+                                cardPanel.showCard( "uslugePanel" );
+                                break;
+                        case 2:
+                                cardPanel.showCard( "ponudePanel" );
+                                break;
+                        case 3:
+                                cardPanel.showCard( "novaPonudaPanel" );
+                                break;
+                        case 4:
+                                cardPanel.showCard( "calendarPanel" );
+                                break;
+                        case 5:
+                                cardPanel.showCard( "personalInfoPanel" );
+                                break;
+                        case 6:
+                                cardPanel.showCard( "practicesPanel" );
+                                break;
+                        case 7:
+                                cardPanel.showCard( "publicationsPanel" );
+                                break;
+                        case 8:
+                                cardPanel.showCard( "agendaPanel" );
+                                break;
+                        case 9:
+                                cardPanel.showCard( "reviewsPanel" );
+                                break;
+                }
+        }
 	
 	
 	/**

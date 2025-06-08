@@ -56,7 +56,7 @@ public class PatientDAO {
 				Integer id = rs.getInt( "id" );
 				String name = rs.getString( "imePrezime" );
 				Long oib = rs.getLong( "oib" );
-				Long jmbg = rs.getLong( "jmbg" );
+				String curp = rs.getString("curp");
 				String mail = rs.getString( "mail" );
 				String phone = rs.getString( "phone" );
 				String address = rs.getString( "patientAddress" );
@@ -78,7 +78,7 @@ public class PatientDAO {
 					
 				}
 				
-				Patient patient = new Patient( id , name , oib , jmbg , mail , phone , address , city , lastExam ,
+				Patient patient = new Patient( id , name , oib , curp , mail , phone , address , city , lastExam ,
 						medicalHistory , alergies , profilePhoto );
 				allPatients.add( patient );
 				
@@ -138,7 +138,7 @@ public class PatientDAO {
 				}
 				
 				patient = new Patient( rs.getInt( "id" ) , rs.getString( "imePrezime" ) , rs.getLong( "oib" ) ,
-						rs.getLong( "jmbg" ) , rs.getString( "mail" ) , rs.getString( "phone" ) ,
+						rs.getString("curp") , rs.getString( "mail" ) , rs.getString( "phone" ) ,
 						rs.getString( "patientAddress" ) , rs.getString( "patientCity" ) , lastExam ,
 						rs.getString( "patientMedicalHistory" ) , rs.getString( "patientAlergies" ) , profilePhoto );
 				
@@ -165,7 +165,7 @@ public class PatientDAO {
 		
 		String name = patient.getName();
 		Long oib = patient.getOib();
-		Long jmbg = patient.getJmbg();
+		String curp = patient.getCurp();
 		String phone = patient.getPhone();
 		String mail = patient.getMail();
 		String address = patient.getAddress();
@@ -173,7 +173,7 @@ public class PatientDAO {
 		String medicalHistory = patient.getMedicalHistory();
 		String alergies = patient.getAlergies();
 		
-		String sql = "insert into patients(imePrezime, mail, phone, oib, jmbg, patientAddress, patientCity, patientMedicalHistory, patientAlergies) values (?, ?, ?, ?, ?, ? ,?, ? ,?)";
+		String sql = "insert into patients(imePrezime, mail, phone, oib, curp, patientAddress, patientCity, patientMedicalHistory, patientAlergies) values (?, ?, ?, ?, ?, ? ,?, ? ,?)";
 		
 		Connection connection = Database.getDatabase().getConnection();
 		
@@ -184,7 +184,7 @@ public class PatientDAO {
 			pst.setString( 2 , mail );
 			pst.setString( 3 , phone );
 			pst.setString( 4 , oib.toString() );
-			pst.setString( 5 , jmbg.toString() );
+			pst.setString( 5 , curp );
 			pst.setString( 6 , address );
 			pst.setString( 7 , city );
 			pst.setString( 8 , medicalHistory );
@@ -212,7 +212,7 @@ public class PatientDAO {
 		Integer id = patient.getId();
 		String name = patient.getName();
 		Long oib = patient.getOib();
-		Long jmbg = patient.getJmbg();
+		String curp = patient.getCurp();
 		String phone = patient.getPhone();
 		String mail = patient.getMail();
 		String address = patient.getAddress();
@@ -220,7 +220,7 @@ public class PatientDAO {
 		String medicalHistory = patient.getMedicalHistory();
 		String alergies = patient.getAlergies();
 		
-		String sql = "UPDATE patients SET imePrezime=?, mail=?, phone=?, patientAddress=?, patientCity=?, patientMedicalHistory=?, patientAlergies=?, oib=? ,jmbg=? where id = ?";
+		String sql = "UPDATE patients SET imePrezime=?, mail=?, phone=?, patientAddress=?, patientCity=?, patientMedicalHistory=?, patientAlergies=?, oib=? ,curp=? where id = ?";
 		
 		Connection connection = Database.getDatabase().getConnection();
 		
@@ -235,7 +235,7 @@ public class PatientDAO {
 			pst.setString( 6 , medicalHistory );
 			pst.setString( 7 , alergies );
 			pst.setString( 8 , oib.toString() );
-			pst.setString( 9 , jmbg.toString() );
+			pst.setString( 9 , curp );
 			pst.setString( 10 , id.toString() );
 			pst.executeUpdate();
 			
