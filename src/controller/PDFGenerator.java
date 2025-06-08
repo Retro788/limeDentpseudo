@@ -64,7 +64,7 @@ public class PDFGenerator {
 		this.offer = offer;
 		this.tblModel = tblModel;
 		
-		String fileName = folderPath + "/" + offer.getTitle() + "_" + offer.getPatientName() + ".pdf";
+                String fileName = folderPath + File.separator + offer.getTitle() + "_" + offer.getPatientName() + ".pdf";
 		
 		generatePDF( fileName , offer , tblModel );
 		openPDF( fileName );
@@ -127,7 +127,7 @@ public class PDFGenerator {
 			cell13.setBorder( com.itextpdf.text.Rectangle.NO_BORDER );
 			tableTest.addCell( cell13 );
 			
-			PdfPCell cell = new PdfPCell( new Phrase( " MPDTech " , font1 ) );
+                        PdfPCell cell = new PdfPCell( new Phrase( " LimeDent " , font1 ) );
 			cell.setBorder( com.itextpdf.text.Rectangle.NO_BORDER );
 			tableTest.addCell( cell );
 			
@@ -145,14 +145,10 @@ public class PDFGenerator {
 			cell.setBorder( com.itextpdf.text.Rectangle.NO_BORDER );
 			tableTest.addCell( cell );
 			
-			cell = new PdfPCell( new Phrase( " www.mpdtech.com.hr " , font2 ) );
-			cell.setBorder( com.itextpdf.text.Rectangle.NO_BORDER );
-			tableTest.addCell( cell );
-			
-			cell = new PdfPCell( new Phrase( " E: ivan.kojic@mail.com " , font2 ) );
-			cell.setHorizontalAlignment( Element.ALIGN_RIGHT );
-			cell.setBorder( com.itextpdf.text.Rectangle.NO_BORDER );
-			tableTest.addCell( cell );
+                        cell = new PdfPCell( new Phrase( " " , font2 ) );
+                        cell.setHorizontalAlignment( Element.ALIGN_RIGHT );
+                        cell.setBorder( com.itextpdf.text.Rectangle.NO_BORDER );
+                        tableTest.addCell( cell );
 			
 			document.add( tableTest );
 			
@@ -160,8 +156,8 @@ public class PDFGenerator {
 			document.add( new Paragraph( "\n" ) );
 			document.add( new Paragraph( "\n" ) );
 			
-			Paragraph paraNazivPonude = new Paragraph( "Ponuda: " + offer.getTitle() , font3 );
-			Paragraph paraImePrezime = new Paragraph( "Ime i prezime: " + offer.getPatientName() , font3 );
+			Paragraph paraNazivPonude = new Paragraph( "Oferta: " + offer.getTitle() , font3 );
+			Paragraph paraImePrezime = new Paragraph( "Nombre y apellido: " + offer.getPatientName() , font3 );
 			Paragraph formattedDatePara = new Paragraph( offer.getDateFormatted() , font2 );
 			
 			document.add( new Paragraph( "\n" ) );
@@ -180,29 +176,29 @@ public class PDFGenerator {
 			
 			PdfPTable artikliTable = new PdfPTable( tblModel.getColumnCount() );
 			artikliTable.setWidthPercentage( 95f );
-			PdfPCell artTblHead = new PdfPCell( new Phrase( " Naziv " , headerFont ) );
+			PdfPCell artTblHead = new PdfPCell( new Phrase( " Nombre " , headerFont ) );
 			headerCellDesign( artTblHead );
 			artikliTable.addCell( artTblHead );
 			
-			artTblHead = new PdfPCell( new Phrase( " Cijena " , headerFont ) );
+			artTblHead = new PdfPCell( new Phrase( " Precio " , headerFont ) );
 			headerCellDesign( artTblHead );
 			artikliTable.addCell( artTblHead );
 			
-			artTblHead = new PdfPCell( new Phrase( " Komada " , headerFont ) );
+			artTblHead = new PdfPCell( new Phrase( " Cantidad " , headerFont ) );
 			headerCellDesign( artTblHead );
 			artikliTable.addCell( artTblHead );
 			
-			artTblHead = new PdfPCell( new Phrase( " Ukupno " , headerFont ) );
+			artTblHead = new PdfPCell( new Phrase( " Total " , headerFont ) );
 			headerCellDesign( artTblHead );
 			artikliTable.addCell( artTblHead );
 			
-			artTblHead = new PdfPCell( new Phrase( " Popust " , headerFont ) );
+			artTblHead = new PdfPCell( new Phrase( " Descuento " , headerFont ) );
 			headerCellDesign( artTblHead );
 			artikliTable.addCell( artTblHead );
 			
-			artTblHead = new PdfPCell( new Phrase( " Ukupno s popustom " , headerFont ) );
-			headerCellDesign( artTblHead );
-			artikliTable.addCell( artTblHead );
+                        artTblHead = new PdfPCell( new Phrase( " Total con descuento " , headerFont ) );
+                        headerCellDesign( artTblHead );
+                        artikliTable.addCell( artTblHead );
 			
 			for ( int i = 0; i < tblModel.getRowCount(); i++ ) {
 				
@@ -228,7 +224,7 @@ public class PDFGenerator {
 				
 			}
 			
-			PdfPCell zadnjiRedCell = new PdfPCell( new Phrase( "Ukupno:" , headerFont ) );
+			PdfPCell zadnjiRedCell = new PdfPCell( new Phrase( "Total:" , headerFont ) );
 			prazniRedDesign( zadnjiRedCell );
 			artikliTable.addCell( zadnjiRedCell );
 			
@@ -246,7 +242,7 @@ public class PDFGenerator {
 			
 			document.add( artikliTable );
 			
-			Paragraph adminPdf = new Paragraph( "Ponudu napravio/la: " + offer.getAuthorName() , font2 );
+			Paragraph adminPdf = new Paragraph( "Oferta creada por: " + offer.getAuthorName() , font2 );
 			
 			document.add( adminPdf );
 			
