@@ -9,19 +9,20 @@ import design.txtInput.TextField;
 
 /**
  *
- * The InputControls class provides static methods for input validation of
- * various types of input fields such as OIB, JMBG, phone number, and email.
+ * La clase InputControls proporciona métodos estáticos para validar los
+ * campos de entrada como el DNI, CURP, número de teléfono y correo
+ * electrónico.
  */
 public class InputControls {
 	
 	/**
 	 *
-	 * Validates the provided OIB (11 numeric characters) and sets helper text on
-	 * the given text field based on the validation result.
+     * Valida el DNI proporcionado (11 caracteres numéricos) y muestra un mensaje
+     * de ayuda en el campo dependiendo del resultado de la validación.
 	 *
 	 * @param txtOIB The text field to validate.
 	 *
-	 * @return true if the OIB is valid, false otherwise.
+     * @return {@code true} si el DNI es válido, {@code false} en caso contrario.
 	 */
 	public static boolean checkOIB( TextField txtOIB ) {
 		
@@ -29,7 +30,7 @@ public class InputControls {
 		
 		boolean isOIBValid = true;
 		
-//		Checking if input has 11 numeric characters
+//		Comprobamos que tenga 11 dígitos numéricos
 		if ( oib.length() != 11 ) {
 			
 			isOIBValid = false;
@@ -50,17 +51,17 @@ public class InputControls {
 			
 		}
 		
-//		Checking if input String is empty
+//		Si la entrada está vacía no se valida
 		if ( oib.equals( "" ) ) {
 			
 			isOIBValid = true;
 			
 		}
 		
-//		Setting HelperText depending on phone validation
+//		Mostramos la ayuda según el resultado
 		if ( !isOIBValid ) {
 			
-			txtOIB.setHelperText( "Neispravan format OIB-a .." );
+                        txtOIB.setHelperText( "Formato de DNI inválido." );
 			
 		} else {
 			
@@ -76,75 +77,74 @@ public class InputControls {
 	/**
 	 *
 	 * Validates the provided JMBG (13 numeric characters) and sets helper text on
-	 * the given text field based on the validation result.
-	 *
-	 * @param txtJMBG The text field to validate.
-	 *
-	 * @return true if the JMBG is valid, false otherwise.
-	 */
-	public static boolean checkJMBG( TextField txtJMBG ) {
-		
-		String jmbg = txtJMBG.getText();
-		
-		boolean isJMBGValid = true;
-		
-//		Checking if input has 13 numeric characters
-		if ( jmbg.length() != 13 ) {
-			
-			isJMBGValid = false;
-			
-		} else {
-			
-			char[] chars = jmbg.toCharArray();
-			
-			for ( char c : chars ) {
-				
-				if ( c < '0' || c > '9' ) {
-					
-					isJMBGValid = false;
-					
-				}
-				
-			}
-			
-		}
-		
-//		Checking if input String is empty
-		if ( jmbg.equals( "" ) ) {
-			
-			isJMBGValid = true;
-			
-		}
-		
-//		Setting HelperText depending on phone validation
-		if ( !isJMBGValid ) {
-			
-			txtJMBG.setHelperText( "Neispravan format JMBG-a .." );
-			
-		} else {
-			
-			txtJMBG.setHelperText( "" );
-			
-		}
-		
-		return isJMBGValid;
-		
-	}
+         * Valida la CURP proporcionada (18 caracteres alfanuméricos) y muestra un
+         * mensaje de ayuda cuando el formato es inválido.
+         *
+         * @param txtJMBG Campo de texto a validar.
+         *
+         * @return {@code true} si la CURP es válida, {@code false} en caso contrario.
+         */
+        public static boolean checkCURP( TextField txtJMBG ) {
+
+                String jmbg = txtJMBG.getText();
+
+                boolean isJMBGValid = true;
+
+                // Validación: 18 caracteres alfanuméricos
+                if ( jmbg.length() != 18 ) {
+
+                        isJMBGValid = false;
+
+                } else {
+
+                        char[] chars = jmbg.toCharArray();
+
+                        for ( char c : chars ) {
+
+                                if ( !Character.isLetterOrDigit( c ) ) {
+
+                                        isJMBGValid = false;
+
+                                }
+
+                        }
+
+                }
+
+                // Si la entrada está vacía no se valida
+                if ( jmbg.equals( "" ) ) {
+
+                        isJMBGValid = true;
+
+                }
+
+                // Mostramos la ayuda según el resultado
+                if ( !isJMBGValid ) {
+
+                        txtJMBG.setHelperText( "Formato de CURP inválido." );
+
+                } else {
+
+                        txtJMBG.setHelperText( "" );
+
+                }
+
+                return isJMBGValid;
+
+        }
 	
 	
 	/**
-	 *
-	 * Validates the provided phone number using a regular expression and sets
-	 * helper text on the given text field based on the validation result.
-	 *
-	 * @param txtBrojMobitela The text field to validate.
-	 *
-	 * @return true if the phone number is valid, false otherwise.
-	 */
-	public static boolean checkPhone( TextField txtBrojMobitela ) {
-		
-		boolean isPhoneValid = true;
+         * Valida el número de teléfono mediante una expresión regular y muestra
+         * un mensaje de ayuda si el formato es inválido.
+         *
+         * @param txtBrojMobitela Campo de texto a validar.
+         *
+         * @return {@code true} si el número es válido, en caso contrario {@code false}.
+         */
+        public static boolean checkPhone( TextField txtBrojMobitela ) {
 		String phone = txtBrojMobitela.getText();
+                boolean isPhoneValid = true;
 		
 		String regex = "^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$";
 		Pattern pattern = Pattern.compile( regex );
@@ -157,17 +157,17 @@ public class InputControls {
 			
 		}
 		
-//		Checking if input String is empty
+//		Si la entrada está vacía no se valida
 		if ( phone.equals( "" ) ) {
 			
 			isPhoneValid = true;
 			
 		}
 		
-//		Setting HelperText depending on phone validation
+//		Mostramos la ayuda según el resultado
 		if ( !isPhoneValid ) {
 			
-			txtBrojMobitela.setHelperText( "Neispravan format broja mobitela .." );
+			txtBrojMobitela.setHelperText( "Formato de número de móvil inválido." );
 			
 		} else {
 			
@@ -186,45 +186,39 @@ public class InputControls {
 	 * helper text on the given text field based on the validation result.
 	 *
 	 * @param txtMail The text field to validate.
-	 *
-	 * @return true if the email address is valid, false otherwise.
-	 */
-	public static boolean checkMail( TextField txtMail ) {
-		
-		boolean isMailValid = true;
-		String mail = txtMail.getText();
-		
-		String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}";
-		Pattern pattern = Pattern.compile( regex );
-		Matcher matcher = pattern.matcher( mail );
-		
-//		Checking if input String matches regex
-		if ( !matcher.matches() ) {
-			
-			isMailValid = false;
-			
-		}
-		
-//		Checking if input String is empty
-		if ( mail.equals( "" ) ) {
-			
-			isMailValid = true;
-			
-		}
-		
-//		Setting HelperText depending on phone validation
-		if ( !isMailValid ) {
-			
-			txtMail.setHelperText( "Neispravan format mail-a .. " );
-			
-		} else {
-			
-			txtMail.setHelperText( "" );
-			
-		}
-		
-		return isMailValid;
-		
-	}
-	
+         * Valida la dirección de correo electrónico mediante una expresión
+         * regular y muestra un mensaje de ayuda si el formato es inválido.
+         *
+         * @param txtMail Campo de texto a validar.
+         *
+         * @return {@code true} si el correo es válido, de lo contrario {@code false}.
+         */
+        public static boolean checkMail( TextField txtMail ) {
+
+                boolean isMailValid = true;
+                String mail = txtMail.getText();
+
+                String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}";
+                Pattern pattern = Pattern.compile( regex );
+                Matcher matcher = pattern.matcher( mail );
+
+                // Comprobamos que coincida con la expresi\u00f3n regular
+                if ( !matcher.matches() ) {
+                        isMailValid = false;
+                }
+
+                // Si la entrada est\u00e1 vac\u00eda no se valida
+                if ( mail.equals( "" ) ) {
+                        isMailValid = true;
+                }
+
+                // Mostramos la ayuda seg\u00fan el resultado
+                if ( !isMailValid ) {
+                        txtMail.setHelperText( "Formato de correo inv\u00e1lido." );
+                } else {
+                        txtMail.setHelperText( "" );
+                }
+
+                return isMailValid;
+        }
 }
