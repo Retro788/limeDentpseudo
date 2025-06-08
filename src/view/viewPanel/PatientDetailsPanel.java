@@ -219,7 +219,7 @@ public class PatientDetailsPanel extends RoundedShadowPanel {
 		btnUredi.setFocusPainted( false );
 		
 		btnIzbrisi = new ButtonShadow();
-		btnIzbrisi.setText( "Izbri\u0161i" );
+                btnIzbrisi.setText( "Eliminar" );
 		btnIzbrisi.setPreferredSize( new Dimension( 170 , 45 ) );
 		btnIzbrisi.setMinimumSize( new Dimension( 170 , 45 ) );
 		btnIzbrisi.setMaximumSize( new Dimension( 170 , 45 ) );
@@ -250,8 +250,8 @@ public class PatientDetailsPanel extends RoundedShadowPanel {
 			public void actionPerformed( ActionEvent e ) {
 				
 				notification.setType( NotificationType.WARNING );
-				notification.setLblTitle( "Pacijent izbrisan" );
-				notification.setLbMessageText( "Pacijent " + patient.getName() + " izbrisan" );
+                                notification.setLblTitle( "Paciente eliminado" );
+                                notification.setLbMessageText( "Paciente " + patient.getName() + " eliminado" );
 				
 				Message msg = new Message();
 				msg.setMessageTitle("¿Está seguro de que desea eliminar al paciente/residente: " + patient.getName() + "?");
@@ -284,11 +284,11 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 				
 				notification.setType( NotificationType.INFO );
 				notification.setLblTitle( "Paciente actualizado" );
-				notification.setLbMessageText( "Pacijent " + patient.getName() + " a\u017euriran" );
+                                notification.setLbMessageText( "El paciente " + patient.getName() + " se ha actualizado" );
 				
 				Message msg = new Message();
-				msg.setMessageTitle( "Jeste li sigurni da \u017eelite a\u017eurirati pacijenta: " + patient.getName() );
-				msg.setMessageText( "Pritiskom gumba OK pacijent će se a\u017eurirati." );
+                                msg.setMessageTitle( "¿Está seguro de que desea actualizar al paciente: " + patient.getName() + "?" );
+                                msg.setMessageText( "Al presionar el botón OK el paciente se actualizará." );
 				msg.eventOK( new ActionListener() {
 					
 					@Override
@@ -388,8 +388,8 @@ msg.setMessageText("Al presionar el botón OK, el paciente se eliminará de form
 							
 							detaljiController.updatePatientPhoto( patient );
 							notification.setType( NotificationType.SUCCESS );
-							notification.setLblTitle( "Fotografija promijenjena" );
-							notification.setLbMessageText( "Uspije\u0161no ste promijenili fotografiju" );
+                                                        notification.setLblTitle( "Fotografía actualizada" );
+                                                        notification.setLbMessageText( "La fotografía se actualizó correctamente" );
 							notification.showNotification();
 							
 						}
