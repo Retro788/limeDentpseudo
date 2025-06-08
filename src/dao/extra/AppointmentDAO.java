@@ -1,0 +1,58 @@
+package dao.extra;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.time.LocalDateTime;
+
+import model.Database;
+import model.extra.Appointment;
+
+public class AppointmentDAO {
+    public ArrayList<Appointment> getAll() {
+        ArrayList<Appointment> list = new ArrayList<>();
+        Connection c = Database.getDatabase().getConnection();
+        try {
+            PreparedStatement pst = c.prepareStatement("select * from citas");
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Appointment a = new Appointment(
+                    rs.getInt("id"),
+                    rs.getInt("publicacion_id"),
+                    rs.getInt("paciente_id"),
+                    rs.getTimestamp("fecha").toLocalDateTime()
+                );
+                list.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public void add(Appointment a) {
+        Connection c = Database.getDatabase().getConnection();
+        try {
+            PreparedStatement pst = c.prepareStatement("insert into citas(publicacion_id, paciente_id, fecha) values (?,?,?)");
+            pst.setInt(1, a.getPublicacionId());
+            pst.setInt(2, a.getPacienteId());
+            pst.setTimestamp(3, java.sql.Timestamp.valueOf(a.getFecha()));
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(int id) {
+        Connection c = Database.getDatabase().getConnection();
+        try {
+            PreparedStatement pst = c.prepareStatement("delete from citas where id=?");
+            pst.setInt(1, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}

@@ -2,6 +2,7 @@ package model;
 
 
 import java.sql.SQLException;
+import java.sql.Connection;
 
 
 
@@ -46,30 +47,32 @@ public class DatabaseConnectionThread extends Thread {
 		
 		Thread.currentThread().setName( "Database Connection Thread" );
 		
-		while ( running ) {
-			
-			try {
-				
-				if ( database.getConnection().isClosed() ) {
-					
-					System.out.println( "Database disconnected...Trying to connect again" );
-					Database.connect();
-					
-				} else {
-					
-					System.out.println( "Database connected...Running on thread " + Thread.currentThread().getName() );
-					
-				}
-				
-				Thread.sleep( SLEEP_TIME );
-				
-			} catch ( InterruptedException | SQLException e ) {
-				
-				e.printStackTrace();
-				
-			}
-			
-		}
+               while ( running ) {
+
+                        try {
+
+                                Connection conn = database.getConnection();
+
+                                if ( conn == null || conn.isClosed() ) {
+
+                                        System.out.println( "Database disconnected...Trying to connect again" );
+                                        Database.connect();
+
+                                } else {
+
+                                        System.out.println( "Database connected...Running on thread " + Thread.currentThread().getName() );
+
+                                }
+
+                                Thread.sleep( SLEEP_TIME );
+
+                        } catch ( InterruptedException | SQLException e ) {
+
+                                e.printStackTrace();
+
+                        }
+
+                }
 		
 	}
 	

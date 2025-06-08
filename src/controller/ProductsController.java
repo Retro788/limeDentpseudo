@@ -211,7 +211,7 @@ public class ProductsController {
 			ProductCommand command = undoStack.pop();
 			command.undo();
 			
-			data = "Vratili ste izbrisanu uslugu - " + command.getProductInfo();
+                        data = "Ha restaurado el servicio eliminado - " + command.getProductInfo();
 			
 			productList.add( command.getProduct() );
 			tableModel.fireTableDataChanged();
@@ -220,11 +220,11 @@ public class ProductsController {
 			uslugePanel.getTable().scrollRectToVisible(
 					uslugePanel.getTable().getCellRect( uslugePanel.getTable().getRowCount() - 1 , 0 , true ) );
 			
-		} else {
-			
-			data = "Nemate što poništiti...";
-			
-		}
+                } else {
+
+                        data = "No hay nada para deshacer...";
+
+                }
 		
 		return data;
 		
