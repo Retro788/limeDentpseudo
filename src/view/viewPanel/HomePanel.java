@@ -334,7 +334,7 @@ public class HomePanel extends RoundedShadowPanel {
 				Message msg = new Message();
 				msg.setMessageTitle( "¿Está seguro que desea eliminar al paciente: "
 						+ table.getValueAt( table.getSelectedRow() , 1 ) );
-				msg.setMessageText( "Pritiskom gumba OK pacijent se bri\u0161e nepovratno." );
+                                msg.setMessageText( "Al presionar el botón OK el paciente se eliminará de forma permanente." );
 				msg.eventOK( new ActionListener() {
 					
 					@Override
