@@ -143,7 +143,7 @@ public class NewMedicalExamPanel extends RoundedShadowPanel {
 		table.setRowHeight( 75 );
 		
 		table.setModel(
-				new DefaultTableModel( new Object[][] { { "13-01-2023" , "Ivan Kojić" , "Pregled Test" , null } } ,
+                               new DefaultTableModel( new Object[][] { { "13-01-2023" , "Juan Pérez" , "Consulta de prueba" , null } } ,
 						
 						new String[] { "Fecha" , "Doctor" , "Consulta" , "" } ) {
 				
@@ -215,9 +215,8 @@ public class NewMedicalExamPanel extends RoundedShadowPanel {
 					@Override
 					public void actionPerformed( ActionEvent e ) {
 						
-						noviPregledController.deleteExam( row );
-						notification.showNotification();
-						GlassPanePopup.closePopupLast();
+                                                noviPregledController.deleteExam( row );
+                                                notification.showNotification();
 						
 					}
 					
@@ -231,8 +230,8 @@ public class NewMedicalExamPanel extends RoundedShadowPanel {
 			@Override
 			public void onView( int row ) {
 				
-				MessageInfo msgInfo = new MessageInfo();
-				msgInfo.setMessageTitle( "Datum: " + noviPregledController.getSelectedExam( row ).getDateFormatted() );
+                               MessageInfo msgInfo = new MessageInfo();
+                               msgInfo.setMessageTitle( "Fecha: " + noviPregledController.getSelectedExam( row ).getDateFormatted() );
 				msgInfo.setMessageText(
 						"Consulta realizada por: " + noviPregledController.getSelectedExam( row ).getDoctorName()
 								+ "\nConsulta:\n " + noviPregledController.getSelectedExam( row ).getInfo() );
