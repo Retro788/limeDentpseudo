@@ -97,7 +97,7 @@ public class NewOfferPanel extends RoundedShadowPanel {
 		
 		txtNazivPonude = new TextField();
 		txtNazivPonude.setLineColor( new Color( 46 , 191 , 165 ) );
-		txtNazivPonude.setLabelText( "Naziv Ponude" );
+                txtNazivPonude.setLabelText( "Título de la oferta" );
 		txtNazivPonude.setHintTextColor( new Color( 121 , 118 , 118 ) );
 		txtNazivPonude.setForeground( new Color( 44 , 51 , 51 ) );
 		txtNazivPonude.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
@@ -105,7 +105,7 @@ public class NewOfferPanel extends RoundedShadowPanel {
 		
 		txtImePrezime = new TextField();
 		txtImePrezime.setLineColor( new Color( 46 , 191 , 165 ) );
-		txtImePrezime.setLabelText( "Ime i prezime" );
+                txtImePrezime.setLabelText( "Nombre y apellido" );
 		txtImePrezime.setHintTextColor( new Color( 121 , 118 , 118 ) );
 		txtImePrezime.setForeground( new Color( 44 , 51 , 51 ) );
 		txtImePrezime.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
@@ -136,7 +136,7 @@ public class NewOfferPanel extends RoundedShadowPanel {
 		txtKolicina = new TextField();
 		txtKolicina.setText( "1" );
 		txtKolicina.setLineColor( new Color( 46 , 191 , 165 ) );
-		txtKolicina.setLabelText( "Koli\u010dina" );
+                txtKolicina.setLabelText( "Cantidad" );
 		txtKolicina.setHintTextColor( new Color( 121 , 118 , 118 ) );
 		txtKolicina.setForeground( new Color( 44 , 51 , 51 ) );
 		txtKolicina.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
@@ -145,7 +145,7 @@ public class NewOfferPanel extends RoundedShadowPanel {
 		txtPopust = new TextField();
 		txtPopust.setText( "0" );
 		txtPopust.setLineColor( new Color( 46 , 191 , 165 ) );
-		txtPopust.setLabelText( "Popust" );
+                txtPopust.setLabelText( "Descuento" );
 		txtPopust.setHintTextColor( new Color( 121 , 118 , 118 ) );
 		txtPopust.setForeground( new Color( 44 , 51 , 51 ) );
 		txtPopust.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
@@ -179,9 +179,9 @@ public class NewOfferPanel extends RoundedShadowPanel {
 		table.setShowHorizontalLines( false );
 		table.setShowGrid( false );
 		
-		table.setModel( new DefaultTableModel( new Object[][] {} ,
-				new String[] { "Naziv" , "Cijena" , "Koli\u010dina" , "Ukupno" , "Popust" , "Ukupno s popustom" ,
-							   "Ukupno s PDV-om" } ) );
+                table.setModel( new DefaultTableModel( new Object[][] {} ,
+                                new String[] { "Nombre" , "Precio" , "Cantidad" , "Total" , "Descuento" , "Total con descuento" ,
+                                                           "Total con IVA" } ) );
 		table.getColumnModel().getColumn( 0 ).setMinWidth( 325 );
 		table.getColumnModel().getColumn( 0 ).setMaxWidth( 325 );
 		table.getColumnModel().getColumn( 0 ).setPreferredWidth( 325 );
@@ -200,14 +200,14 @@ public class NewOfferPanel extends RoundedShadowPanel {
 		btnDodaj = new ButtonShadow();
 		btnDodaj.setMaximumSize( new Dimension( 150 , 45 ) );
 		btnDodaj.setPreferredSize( new Dimension( 150 , 45 ) );
-		btnDodaj.setText( "Dodaj" );
+                btnDodaj.setText( "Agregar" );
 		btnDodaj.setForeground( new Color( 121 , 118 , 118 ) );
 		btnDodaj.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		btnDodaj.setFocusPainted( false );
 		
 		btnIzbrisi = new ButtonShadow();
 		btnIzbrisi.setMaximumSize( new Dimension( 150 , 45 ) );
-		btnIzbrisi.setText( "Izbri\u0161i" );
+                btnIzbrisi.setText( "Eliminar" );
 		btnIzbrisi.setForegroundColorOUT( new Color( 146 , 20 , 12 ) );
 		btnIzbrisi.setForegroundColorIN( new Color( 146 , 20 , 12 ) );
 		btnIzbrisi.setForeground( new Color( 146 , 20 , 12 ) );
@@ -254,7 +254,7 @@ public class NewOfferPanel extends RoundedShadowPanel {
 		cbKarticaTxt.setBackground( new Color( 244 , 244 , 249 ) );
 		cbKartica.setEnabled( false );
 		
-		lblTotal = new JLabel( "Ukupno:" );
+                lblTotal = new JLabel( "Total:" );
 		lblTotal.setMinimumSize( new Dimension( 150 , 20 ) );
 		lblTotal.setMaximumSize( new Dimension( 150 , 20 ) );
 		lblTotal.setPreferredSize( new Dimension( 150 , 20 ) );
@@ -272,7 +272,7 @@ public class NewOfferPanel extends RoundedShadowPanel {
 		textAreaScroll.setMinimumSize( new Dimension( 250 , 250 ) );
 		textAreaScroll.setForeground( new Color( 44 , 51 , 51 ) );
 		textAreaScroll.setLineColor( new Color( 46 , 191 , 165 ) );
-		textAreaScroll.setLabelText( "Bilje\u0161ke" );
+                textAreaScroll.setLabelText( "Notas" );
 		textAreaScroll.setFont( new Font( "Century Gothic" , Font.PLAIN , 15 ) );
 		textAreaScroll.setBackground( new Color( 244 , 244 , 249 ) );
 		
@@ -293,7 +293,7 @@ public class NewOfferPanel extends RoundedShadowPanel {
 		btnPDF.setForegroundColorIN( new Color( 244 , 244 , 249 ) );
 		btnPDF.setRippleColor( new Color( 220 , 220 , 220 ) );
 		btnPDF.setRound( 25 );
-		btnPDF.setText( "PDF" );
+                btnPDF.setText( "Guardar PDF" );
 		btnPDF.setFont( new Font( "Century Gothic" , Font.BOLD , 20 ) );
 		
 		initLayout();
@@ -323,7 +323,7 @@ public class NewOfferPanel extends RoundedShadowPanel {
 						
 						txtKolicina.requestFocus();
 						txtKolicina.selectAll();
-						txtKolicina.setHelperText( "Unesite drugi broj" );
+                                                txtKolicina.setHelperText( "Ingrese otro número" );
 						
 					} else {
 						
@@ -352,7 +352,7 @@ public class NewOfferPanel extends RoundedShadowPanel {
 						
 						txtPopust.requestFocus();
 						txtPopust.selectAll();
-						txtPopust.setHelperText( "Unesite drugi broj" );
+                                                txtPopust.setHelperText( "Ingrese otro número" );
 						
 					} else {
 						

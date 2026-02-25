@@ -106,8 +106,8 @@ public class ImageCompressionThread extends Thread {
 						patient.setProfilePhoto( new ImageIcon( compressedImage ) );
 						
 						notification.setType( NotificationType.SUCCESS );
-						notification.setLblTitle( "Uspije\u0161na kompresija" );
-						notification.setLbMessageText( "Fotografiji je uspje\u0161no smanjena veli\u010Dina" );
+                                                notification.setLblTitle( "Compresión exitosa" );
+                                                notification.setLbMessageText( "La fotografía se ha comprimido correctamente" );
 						notification.showNotification();
 						
 						try {
@@ -138,8 +138,8 @@ public class ImageCompressionThread extends Thread {
 							System.out.println( "Cant be compressed anymore..." );
 //							we cannot compress the image anymore, so we just exit the loop
 							notification.setType( NotificationType.WARNING );
-							notification.setLblTitle( "Fotografija prevelika" );
-							notification.setLbMessageText( "Odaberite fotografiju manju od 2MB..." );
+                                                        notification.setLblTitle( "Fotografía demasiado grande" );
+                                                        notification.setLbMessageText( "Seleccione una fotografía de menos de 2MB" );
 							notification.showNotification();
 							done = true;
 							
